@@ -1,0 +1,284 @@
+#+TITLE: AWS Rails settings
+#+AUTHOR: Hoyoul Park
+#+DESCRIPTION: Org-HTML export made simple.
+#+KEYWORDS:  org-mode, export, html, theme, style, css, js, bigblow
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 toc:t num:2
+#+MACRO: color @@html:<font color=></font>@@
+#+PROPERTY:  header-args :padline no
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+LATEX_HEADER: \usepackage{kotex}
+#+latex_header: \hypersetup{colorlinks=true}
+* AWS EC2 Server Settings
+** EC2 생성
+- login한 후에 aws ec2를 만들자.
+  1) Launch instance 실행
+#+CAPTION: launch instance
+#+NAME: launch instance를 만들자.
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/launchinstance.png]]
+
+ 2) ubuntu 20.04를 선택
+ #+CAPTION: ubuntu 20.04 image 선택
+ #+NAME: ubuntu20.04
+ #+attr_html: :width 400px
+ #+attr_latex: :width 100px
+ [[./img/ubuntu.png]]
+
+ 3)instance를 설정한다.
+ #+CAPTION: instance 설정
+ #+NAME: instance설정
+ #+attr_html: :width 400px
+ #+attr_latex: :width 100px
+ [[./img/instance.png]]
+
+ 4) storage(EBS)설정 (돈이 들어간다.)
+#+CAPTION: ebs  설정한다.
+#+NAME:  ebs 설정한다.
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/default.png]]
+
+5) 보안관리자(Security Group)
+#+CAPTION: http추가
+#+NAME: http 추가
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/network.png]]
+
+6) key 생성
+#+CAPTION: key 
+#+NAME: key
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/key.png]]
+
+** SSH 접속 settings
+1) 받은 pem 키를 chmod 0400으로 설정한 후 ~/.ssh/ 에 넣는다.
+2) ec2의 주소를 check한 후 ssh로 접속해보자.
+   #+CAPTION: ssh1
+#+NAME: ssh1
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/ssh1.png]]
+
+ #+begin_quote
+ ssh -i ~/.ssh/ec2_keys.pem ubuntu@주소
+ #+end_quote
+aws에서 설정할 때 얻은 ssh pem 키와 주소를 사용해서 ssh접속을 한다. 주소는 dns주소 혹은 ip주소를 사용해도 된다. 아래에 보면 ubuntu계정으로 접속한 것을 볼 수 있다.
+#+CAPTION: connection
+#+NAME: connectio
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/connection.png]]
+
+** root password설정과 root로 ssh 연결
+#+CAPTION: root password설정
+#+NAME: root pw 설정
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/root_pw.png]]
+
+1) ssh 접속을 root로 할 수 있게 설정
+   - ubuntu로 접속한다.
+   - sudo vi /etc/ssh/sshd_config에서
+      #+begin_quote
+'#PermitRootLogin prohibit-password를
+PermitRootLogin prohibit-password yes로 바꾼다.
+      #+end_quote
+2) su root를 사용해서 root로 switch한다.
+3) cd로 home/.ssh으로 이동
+4) mv authorized_key authorized_key_bak
+5) cp /home/ubuntu/.ssh/authorized_keys .
+   현재 ubuntu계정의 ssh키만 aws ec2에 접속할 수 있는 이유는 authorized_key때문이다. 이 key를 root에 복사해서 root로
+   접근할 수 있게 하는 것이다.
+6) service sshd restart
+#+CAPTION: ssh 처리
+#+NAME: ssh처리
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/ssh처리.png]]
+7) root로 접근이 되는 지 확인해 본다.
+#+CAPTION: root ssh
+#+NAME: root ssh
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/rootssh.png]]
+
+** deploy를 위한 계정 설정
+1) ssh root로 접근
+2) deploy계정 생성
+#+CAPTION: deploy
+#+NAME: deploy
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/a.jpg]]
+나머지 설정도 해준다.
+ #+begin_quote
+ 
+ #+end_quote
+
+1) deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
+   - sudo mkdir /home/deploy/.ssh
+   - sudo cp /home/ubuntu/.ssh/authorized_keys /home/deploy/.ssh
+   - sudo chown -R deploy:deploy /home/deploy/.ssh
+   - sudo service sshd restart
+   - sudo usermod -aG sudo deploy
+
+2) test를 해본다.
+
+** ruby 설정 (deploy계정으로)
+#+CAPTION: deploy2
+#+NAME: deploy2
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/deploy2.png]]
+
+#+CAPTION: deploy3
+#+NAME: deploy3
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/deploy3.png]]
+
+** bundler설정
+#+CAPTION: bundler
+#+NAME: bundler
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/bundler.png]]
+
+** Nginx & Passenger 설정
+#+CAPTION: nginx&passenger
+#+NAME: nginx & passenger
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/nginx.png]]
+
+1) passenger config 파일 수정
+    #+begin_quote
+    sudo vi /etc/nginx/conf.d/mod-http-passenger.conf
+    #+end_quote
+    아래와 같이 수정한다.
+#+CAPTION: passenger config
+#+NAME: passenger config
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/pruby.png]]
+
+2) nginx를 다시 시작한다.
+   #+begin_quote
+   sudo service nginx start
+   #+end_quote
+3) nginx 접속 해 본다.
+#+CAPTION: nginx 
+#+NAME: nginx
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/nginx2.png]]
+
+4) nginx에 우리의 app을 연결한다.
+#+CAPTION: nginx associates with my app
+#+NAME: nginx with myapp
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/nginx3.png]]
+
+기존에 연결된 default를 제거하고, 대신 myapp을 설정한다.
+그리고 다시 nginx를 다음과 같이 reload한다.
+ #+begin_quote
+ sudo service nginx reload
+ #+end_quote
+
+- *Problem*: 예상치 못한 에러 발생
+  #+CAPTION: nginx4
+#+NAME: nginx
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/nginx4.png]]
+journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다음과 같은 메시지가 있었다.
+#+CAPTION: pam message
+#+NAME: pam
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/pam.png]]
+더 정확한 확인을 위해서 nginx의 log를 확인해 보자
+#+CAPTION: error log
+#+NAME: error log
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/errorlog.png]]
+위에 보면 gzip_static_on에 문제가 있어 보인다.
+
+- *solution*: gzip_static on으로 고쳤다.
+** Mariadb Database 설치하기
+1) 우선 system을 업그레이드한다.
+    #+begin_quote
+    sudo apt update && sudo apt-get -y upgrade
+    #+end_quote
+
+2) sudo apt-get install -y mariadb-server
+mariadb server를 설치한다.
+3) sudo mysql_secure_installation
+root pw를 설정한다.
+      1. password를 묻는다. 이것은 system password, sudo에 대한..그래서 1234를 입력
+      2. validation production : y
+      3. root pw 입력:root1234, 참고로 deploy계정은 pw:user1234
+      4. anonmous user 삭제:y
+      5. remote :n
+      6. testdb delete :y
+      7. privileges table reload: y
+4) sudo mysql -u root -p
+   mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.
+#+CAPTION: mysql connection
+#+NAME: mysql
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/connection.png]]
+
+5) mariadb에서 database와 user를 만든다.
+#+CAPTION: db & user
+#+NAME: db & user
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/db_create.png]]
+
+** Capistrano설정
+*** Gemfile 설정
+Local로 다시 들어간다. myapp으로 간다. Gemfiles에 다음을 추가한다.
+ #+begin_quote
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+    #+end_quote
+ cap명령어를 실행하나 수행되지 않을 때는 rbenv rehash를 하고 다시 실행한다.
+ #+CAPTION: rehash
+ #+NAME: rehash
+ #+attr_html: :width 400px
+ #+attr_latex: :width 100px
+ [[./img/rehash.png]]
+*** Capfile 설정
+이렇게 하면 capfile을 만든다. 그리고 capfile에 다음을 추가한다.
+ #+begin_quote
+require 'capistrano/rails'
+require 'capistrano/passenger'
+require 'capistrano/rbenv'
+
+set :rbenv_type, :user
+set :rbenv_ruby, '3.0.1'
+ #+end_quote
+*** config/deploy.rb 설정
+#+CAPTION: deploy settings
+#+NAME: deploy settings
+#+attr_html: :width 400px
+#+attr_latex: :width 100px
+[[./img/deploysettings.png]]
+ 
+
+
+
+
+   
+
+
