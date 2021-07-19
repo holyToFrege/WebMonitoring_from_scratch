@@ -1,0 +1,44 @@
+#+TITLE: Emacs Settings for ROR
+#+AUTHOR: Holy Frege
+#+DESCRIPTION: Org-HTML export made simple.
+#+KEYWORDS:  org-mode, export, html, theme, style, css, js, bigblow
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 toc:t num:2
+#+MACRO: color @@html:<font color=></font>@@
+#+PROPERTY:  header-args :padline no
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+LATEX_HEADER: \usepackage{kotex}
+#+latex_header: \hypersetup{colorlinks=true}
+* Emacs Settings for ROR
+** rbenv 설치와 사용법
+*** [osx]에서 설치와 사용법
+- 설치
+ #+begin_quote
+ brew install rbenv
+ #+end_quote
+- 설치 가능한 ruby목록
+   #+begin_quote
+   rbenv install -l
+   rbenv install -L
+   #+end_quote
+- 설치된 목록 확인
+   #+begin_quote
+   rbenv versions
+   #+end_quote
+- 설치된 ruby에서 global설정
+   #+begin_quote
+   rbenv global 2.6.3
+   #+end_quote
+*** [emacs]에서 설치와 사용법
+- emacs에서 설치
+   #+begin_quote
+   (use-package rbenv
+   :ensure t)
+   #+end_quote
+- emacs에서 설정
+   #+begin_quote
+   (setq rbenv-installation-dir "/opt/homebrew/rbenv")
+   #+end_quote
+
+
+ 
