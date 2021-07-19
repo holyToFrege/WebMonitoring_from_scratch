@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-15 Thu 16:00 -->
+<!-- 2021-07-18 Sun 12:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AWS Rails settings</title>
@@ -232,41 +232,51 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb75ba96">1. AWS EC2 Server Settings</a>
+<li><a href="#orga51739a">1. AWS EC2 Server Settings</a>
 <ul>
-<li><a href="#orgd546d2c">1.1. EC2 생성</a></li>
-<li><a href="#org468c613">1.2. SSH 접속 settings</a></li>
-<li><a href="#orgbb96e53">1.3. root password설정과 root로 ssh 연결</a></li>
-<li><a href="#org20dcb3d">1.4. deploy를 위한 계정 설정</a></li>
-<li><a href="#orgec19bbb">1.5. ruby 설정 (deploy계정으로)</a></li>
-<li><a href="#org6c5a023">1.6. bundler설정</a></li>
-<li><a href="#org9843c3b">1.7. Nginx &amp; Passenger 설정</a></li>
-<li><a href="#orgc699821">1.8. Mariadb Database 설치하기</a></li>
-<li><a href="#org2ad2158">1.9. Capistrano설정</a>
+<li><a href="#org98fe416">1.1. EC2 생성</a></li>
+<li><a href="#org031796a">1.2. SSH 접속 settings</a></li>
+<li><a href="#orgd93acb7">1.3. root password설정과 root로 ssh 연결</a></li>
+<li><a href="#orgca038d1">1.4. deploy를 위한 계정 설정</a></li>
+<li><a href="#orgebbdbb3">1.5. ruby 설정 (deploy계정으로)</a></li>
+<li><a href="#orgca3aeb8">1.6. bundler설정</a></li>
+<li><a href="#org6ca26e2">1.7. Nginx &amp; Passenger 설정</a></li>
+<li><a href="#orga5cbdc9">1.8. Mariadb Database 설치하기</a></li>
+<li><a href="#org3d33308">1.9. Capistrano설정</a>
 <ul>
-<li><a href="#org20fab16">Gemfile 설정</a></li>
-<li><a href="#orgcd0d3f4">Capfile 설정</a></li>
-<li><a href="#orge5a0680">config/deploy.rb 설정</a></li>
+<li><a href="#org13fa3a3">capistrano의 일반적 처리과정.</a></li>
+<li><a href="#org4cdc908">Gemfile 설정</a></li>
+<li><a href="#org3a61d1c">Capfile 설정</a></li>
+<li><a href="#org498b51d">config/deploy.rb 설정</a></li>
 </ul>
 </li>
-<li><a href="#orgfa6b262">1.10. Capistrano Error</a>
+<li><a href="#orga6349a8">1.10. Capistrano Error</a>
 <ul>
-<li><a href="#orga9d56fe">git access denied error</a></li>
-<li><a href="#orgf249e0b">git:create<sub>release</sub> master error</a></li>
-<li><a href="#org188fae4">bundle:install</a></li>
+<li><a href="#org770ee29">Thread error</a></li>
+<li><a href="#org7297410">git:check error-permission denied error</a></li>
+<li><a href="#org6feedab">git:create<sub>release</sub> master error</a></li>
+<li><a href="#orga156d2d">bundle:install</a></li>
 </ul>
 </li>
+<li><a href="#org509744f">1.11. bundler:install, Failed to build gem native extension</a></li>
+<li><a href="#orgfe3bd3c">1.12. deploy:migrating error</a></li>
+<li><a href="#org654ed87">1.13. db관련 에러가 계속해서 나올경우</a></li>
+<li><a href="#org2c29e82">1.14. cap production deploy 하자마자 sshkit error</a></li>
+<li><a href="#org2c41099">1.15. git permission error</a></li>
+<li><a href="#org2d4d33a">1.16. phusion messager is not running</a></li>
+<li><a href="#orga42fa26">1.17. nginx log위치 [ubuntu]</a></li>
+<li><a href="#org3c609c5">1.18. passenger log file</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb75ba96" class="outline-2">
-<h2 id="orgb75ba96"><span class="section-number-2">1</span> AWS EC2 Server Settings</h2>
+<div id="outline-container-orga51739a" class="outline-2">
+<h2 id="orga51739a"><span class="section-number-2">1</span> AWS EC2 Server Settings</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-orgd546d2c" class="outline-3">
-<h3 id="orgd546d2c"><span class="section-number-3">1.1</span> EC2 생성</h3>
+<div id="outline-container-org98fe416" class="outline-3">
+<h3 id="org98fe416"><span class="section-number-3">1.1</span> EC2 생성</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>login한 후에 aws ec2를 만들자.
@@ -275,7 +285,7 @@
 </ol></li>
 </ul>
 
-<div id="orgfc41ee7" class="figure">
+<div id="orgc4338c7" class="figure">
 <p><img src="./img/launchinstance.png" alt="launchinstance.png" height="150px" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 1: </span>launch instance</p>
@@ -285,7 +295,7 @@
 <li>ubuntu 20.04를 선택</li>
 </ol>
 
-<div id="orgd0eec86" class="figure">
+<div id="org928fa23" class="figure">
 <p><img src="./img/ubuntu.png" alt="ubuntu.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 2: </span>ubuntu 20.04 image 선택</p>
@@ -295,7 +305,7 @@
 3)instance를 설정한다.
 </p>
 
-<div id="org26179d4" class="figure">
+<div id="org0e68fe3" class="figure">
 <p><img src="./img/instance.png" alt="instance.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 3: </span>instance 설정</p>
@@ -305,7 +315,7 @@
 <li>storage(EBS)설정 (돈이 들어간다.)</li>
 </ol>
 
-<div id="orgda49e45" class="figure">
+<div id="orgaf6357e" class="figure">
 <p><img src="./img/default.png" alt="default.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 4: </span>ebs  설정한다.</p>
@@ -315,7 +325,7 @@
 <li>보안관리자(Security Group)</li>
 </ol>
 
-<div id="org53b6e99" class="figure">
+<div id="orgd1e6c65" class="figure">
 <p><img src="./img/network.png" alt="network.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 5: </span>http추가</p>
@@ -325,7 +335,7 @@
 <li>key 생성</li>
 </ol>
 
-<div id="org54c8d19" class="figure">
+<div id="org6966eac" class="figure">
 <p><img src="./img/key.png" alt="key.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 6: </span>key</p>
@@ -333,8 +343,8 @@
 </div>
 </div>
 
-<div id="outline-container-org468c613" class="outline-3">
-<h3 id="org468c613"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
+<div id="outline-container-org031796a" class="outline-3">
+<h3 id="org031796a"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
 <div class="outline-text-3" id="text-1-2">
 <ol class="org-ol">
 <li>받은 pem 키를 chmod 0400으로 설정한 후 ~/.ssh/ 에 넣는다.</li>
@@ -343,7 +353,7 @@ ec2의 주소를 check한 후 ssh로 접속해보자.
 </p></li>
 </ol>
 
-<div id="org3b16440" class="figure">
+<div id="orgad45ec7" class="figure">
 <p><img src="./img/ssh1.png" alt="ssh1.png" width="1000px" />
 </p>
 </div>
@@ -357,7 +367,7 @@ ssh -i ~/.ssh/ec2<sub>keys.pem</sub> ubuntu@주소
 aws에서 설정할 때 얻은 ssh pem 키와 주소를 사용해서 ssh접속을 한다. 주소는 dns주소 혹은 ip주소를 사용해도 된다. 아래에 보면 ubuntu계정으로 접속한 것을 볼 수 있다.
 </p>
 
-<div id="org80a7f88" class="figure">
+<div id="orgf5109e4" class="figure">
 <p><img src="./img/connection.png" alt="connection.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 8: </span>connection</p>
@@ -365,11 +375,11 @@ aws에서 설정할 때 얻은 ssh pem 키와 주소를 사용해서 ssh접속�
 </div>
 </div>
 
-<div id="outline-container-orgbb96e53" class="outline-3">
-<h3 id="orgbb96e53"><span class="section-number-3">1.3</span> root password설정과 root로 ssh 연결</h3>
+<div id="outline-container-orgd93acb7" class="outline-3">
+<h3 id="orgd93acb7"><span class="section-number-3">1.3</span> root password설정과 root로 ssh 연결</h3>
 <div class="outline-text-3" id="text-1-3">
 
-<div id="orgadfddda" class="figure">
+<div id="orga9af7b4" class="figure">
 <p><img src="./img/root_pw.png" alt="root_pw.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 9: </span>root password설정</p>
@@ -398,7 +408,7 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 <li>service sshd restart</li>
 </ol>
 
-<div id="org22ac9da" class="figure">
+<div id="org14b7d5c" class="figure">
 <p><img src="./img/ssh처리.png" alt="ssh처리.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 10: </span>ssh 처리</p>
@@ -407,7 +417,7 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 <li>root로 접근이 되는 지 확인해 본다.</li>
 </ol>
 
-<div id="org882bf06" class="figure">
+<div id="org7c474ef" class="figure">
 <p><img src="./img/rootssh.png" alt="rootssh.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 11: </span>root ssh</p>
@@ -415,8 +425,8 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 </div>
 
-<div id="outline-container-org20dcb3d" class="outline-3">
-<h3 id="org20dcb3d"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
+<div id="outline-container-orgca038d1" class="outline-3">
+<h3 id="orgca038d1"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
 <div class="outline-text-3" id="text-1-4">
 <ol class="org-ol">
 <li>ssh root로 접근</li>
@@ -447,18 +457,18 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 </div>
 
-<div id="outline-container-orgec19bbb" class="outline-3">
-<h3 id="orgec19bbb"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
+<div id="outline-container-orgebbdbb3" class="outline-3">
+<h3 id="orgebbdbb3"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
 <div class="outline-text-3" id="text-1-5">
 
-<div id="org0ad0683" class="figure">
+<div id="org9cd3f3c" class="figure">
 <p><img src="./img/deploy2.png" alt="deploy2.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 12: </span>deploy2</p>
 </div>
 
 
-<div id="org80d258c" class="figure">
+<div id="org08c37b1" class="figure">
 <p><img src="./img/deploy3.png" alt="deploy3.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 13: </span>deploy3</p>
@@ -466,11 +476,11 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 </div>
 
-<div id="outline-container-org6c5a023" class="outline-3">
-<h3 id="org6c5a023"><span class="section-number-3">1.6</span> bundler설정</h3>
+<div id="outline-container-orgca3aeb8" class="outline-3">
+<h3 id="orgca3aeb8"><span class="section-number-3">1.6</span> bundler설정</h3>
 <div class="outline-text-3" id="text-1-6">
 
-<div id="org443630b" class="figure">
+<div id="org574b920" class="figure">
 <p><img src="./img/bundler.png" alt="bundler.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 14: </span>bundler</p>
@@ -478,11 +488,11 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 </div>
 
-<div id="outline-container-org9843c3b" class="outline-3">
-<h3 id="org9843c3b"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
+<div id="outline-container-org6ca26e2" class="outline-3">
+<h3 id="org6ca26e2"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
 <div class="outline-text-3" id="text-1-7">
 
-<div id="orgab8f85a" class="figure">
+<div id="orgcc99a50" class="figure">
 <p><img src="./img/nginx.png" alt="nginx.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 15: </span>nginx&amp;passenger</p>
@@ -502,7 +512,7 @@ sudo vi /etc/nginx/conf.d/mod-http-passenger.conf
 </p></li>
 </ol>
 
-<div id="org51842b3" class="figure">
+<div id="orga87b36b" class="figure">
 <p><img src="./img/pruby.png" alt="pruby.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 16: </span>passenger config</p>
@@ -520,7 +530,7 @@ sudo service nginx start
 <li>nginx 접속 해 본다.</li>
 </ol>
 
-<div id="orgc4df3d9" class="figure">
+<div id="org6ece3ac" class="figure">
 <p><img src="./img/nginx2.png" alt="nginx2.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 17: </span>nginx</p>
@@ -530,7 +540,7 @@ sudo service nginx start
 <li>nginx에 우리의 app을 연결한다.</li>
 </ol>
 
-<div id="orgec55c75" class="figure">
+<div id="org6f56ede" class="figure">
 <p><img src="./img/nginx3.png" alt="nginx3.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 18: </span>nginx associates with my app</p>
@@ -569,8 +579,8 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc699821" class="outline-3">
-<h3 id="orgc699821"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
+<div id="outline-container-orga5cbdc9" class="outline-3">
+<h3 id="orga5cbdc9"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
 <div class="outline-text-3" id="text-1-8">
 <ol class="org-ol">
 <li><p>
@@ -582,17 +592,13 @@ sudo apt update &amp;&amp; sudo apt-get -y upgrade
 </p>
 </blockquote></li>
 
-<li>sudo apt-get install -y mariadb-server</li>
-</ol>
-<p>
-mariadb server를 설치한다.
-</p>
-<ol class="org-ol">
-<li>sudo mysql<sub>secure</sub><sub>installation</sub></li>
-</ol>
-<p>
+<li>sudo apt-get install -y mariadb-server
+mariadb server를 설치한다.</li>
+<li>sudo apt-get install -y mariadb-client
+mariadb client를 설치한다.</li>
+<li>sudo apt-get install -y libmariadbclient-dev</li>
+<li>sudo mysql<sub>secure</sub><sub>installation</sub>
 root pw를 설정한다.
-</p>
 <ol class="org-ol">
 <li>password를 묻는다. 이것은 system password, sudo에 대한..그래서 1234를 입력</li>
 <li>validation production : y</li>
@@ -601,13 +607,12 @@ root pw를 설정한다.
 <li>remote :n</li>
 <li>testdb delete :y</li>
 <li>privileges table reload: y</li>
-</ol>
-<ol class="org-ol">
+</ol></li>
 <li>sudo mysql -u root -p
 mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.</li>
 </ol>
 
-<div id="orgbb03e55" class="figure">
+<div id="orgbf1a7fa" class="figure">
 <p><img src="./img/connection.png" alt="connection.png" width="400px" />
 </p>
 <p><span class="figure-number">Figure 19: </span>mysql connection</p>
@@ -617,23 +622,49 @@ mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.</li>
 <li>mariadb에서 database와 user를 만든다.</li>
 </ol>
 
-<div id="org4a29c0b" class="figure">
+<div id="org8a50ff4" class="figure">
 <p><img src="./img/db_create.png" alt="db_create.png" width="400px" />
 </p>
 <p><span class="figure-number">Figure 20: </span>db &amp; user</p>
 </div>
+
+<p>
+rails app도 myapp으로 했지만, db에서 database도 myapp으로 통일한다.
+aws에서 만든 계정인 deploy를 db에서도 접근할 수 있게 db에도 만든다.
+</p>
 </div>
 </div>
 
-<div id="outline-container-org2ad2158" class="outline-3">
-<h3 id="org2ad2158"><span class="section-number-3">1.9</span> Capistrano설정</h3>
+
+<div id="outline-container-org3d33308" class="outline-3">
+<h3 id="org3d33308"><span class="section-number-3">1.9</span> Capistrano설정</h3>
 <div class="outline-text-3" id="text-1-9">
 </div>
-<div id="outline-container-org20fab16" class="outline-4">
-<h4 id="org20fab16">Gemfile 설정</h4>
-<div class="outline-text-4" id="text-org20fab16">
+<div id="outline-container-org13fa3a3" class="outline-4">
+<h4 id="org13fa3a3">capistrano의 일반적 처리과정.</h4>
+<div class="outline-text-4" id="text-org13fa3a3">
+
+<div id="org0a9924d" class="figure">
+<p><img src="./img/capistranod.png" alt="capistranod.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 21: </span>capistrano</p>
+</div>
+<ol class="org-ol">
+<li>aws(배포서버)에 접속할 pem이 있는지 확인. pem이 있다면 접속한다.</li>
+<li>git을 접속할수 있는지 확인(ssh permission), ssh key가 있다면 접속</li>
+<li>git source를 배포 서버에 복사 (이 과정이 git:check, git:install&#x2026;.)</li>
+<li>Gem을 bundler를 이용해서 설치(이 과정이 bundler:check, bundler:install&#x2026;)</li>
+<li>nginx를  restart</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org4cdc908" class="outline-4">
+<h4 id="org4cdc908">Gemfile 설정</h4>
+<div class="outline-text-4" id="text-org4cdc908">
 <p>
-Local로 다시 들어간다. myapp으로 간다. Gemfiles에 다음을 추가한다.
+Local로 다시 들어간다. myapp으로 간다. Gemfiles에 다음을 추가한다. 추가할 때 group :development에 할당하자.
+이 과정은 capistrano package를 설치하겠다는 것이다.
 </p>
 <blockquote>
 <p>
@@ -644,21 +675,31 @@ gem 'capistrano-rbenv', '~&gt; 2.1', '&gt;= 2.1.4'
 </p>
 </blockquote>
 <p>
-cap명령어를 실행하나 수행되지 않을 때는 rbenv rehash를 하고 다시 실행한다.
+이렇게 작성 하고  다음을 실행한다.
 </p>
-
-<div id="org236b661" class="figure">
-<p><img src="./img/rehash.png" alt="rehash.png" width="400px" />
-</p>
-<p><span class="figure-number">Figure 21: </span>rehash</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgcd0d3f4" class="outline-4">
-<h4 id="orgcd0d3f4">Capfile 설정</h4>
-<div class="outline-text-4" id="text-orgcd0d3f4">
+<blockquote>
 <p>
-이렇게 하면 capfile을 만든다. 그리고 capfile에 다음을 추가한다.
+bundle
+cap install STAGES=production
+</p>
+</blockquote>
+<p>
+bundle을 실행하면, gemfile에 기술된 gem들이 install된다. capistrano도 installed되어서 cap이란 명령어를 실행할 수 있다.
+cap install을 실행하면, deploy를 위한 설정 파일(.rb)들을 만들어 낸다. 
+만일 cap명령어를 실행하나 수행되지 않을 때는 rbenv rehash를 하고 다시 실행한다.
+</p>
+<p width="400px">
+ <img src="./img/rehash.png" alt="rehash.png" width="400px" />
+cap으로 만들어지는 파일은 capfile, deploy.rb, staging.rb,production.rb같은 deploy같은 설정파일들이다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3a61d1c" class="outline-4">
+<h4 id="org3a61d1c">Capfile 설정</h4>
+<div class="outline-text-4" id="text-org3a61d1c">
+<p>
+capfile은 배포설정 파일을 load할 뿐이다. 실제 설정은 load되는 파일에서 한다.
 </p>
 <blockquote>
 <p>
@@ -674,47 +715,59 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orge5a0680" class="outline-4">
-<h4 id="orge5a0680">config/deploy.rb 설정</h4>
-<div class="outline-text-4" id="text-orge5a0680">
 
-<div id="org18c3e93" class="figure">
-<p><img src="./img/deploysettings.png" alt="deploysettings.png" width="400px" />
+<div id="outline-container-org498b51d" class="outline-4">
+<h4 id="org498b51d">config/deploy.rb 설정</h4>
+<div class="outline-text-4" id="text-org498b51d">
+
+<div id="orgeb128c8" class="figure">
+<p><img src="./img/deploysettings.png" alt="deploysettings.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 22: </span>deploy settings</p>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa6b262" class="outline-3">
-<h3 id="orgfa6b262"><span class="section-number-3">1.10</span> Capistrano Error</h3>
+<div id="outline-container-orga6349a8" class="outline-3">
+<h3 id="orga6349a8"><span class="section-number-3">1.10</span> Capistrano Error</h3>
 <div class="outline-text-3" id="text-1-10">
 </div>
-<div id="outline-container-orga9d56fe" class="outline-4">
-<h4 id="orga9d56fe">git access denied error</h4>
-<div class="outline-text-4" id="text-orga9d56fe">
-<p>
-=&gt; ssh-add ~/.ssh/id-rsa
+<div id="outline-container-org770ee29" class="outline-4">
+<h4 id="org770ee29">Thread error</h4>
+<div class="outline-text-4" id="text-org770ee29">
+<p width="800px">
+<img src="./img/cap1.png" alt="cap1.png" width="800px" />
+=&gt; cap은 aws에 접근할 수 있는 pem키가 없다면, cap이 진행되지 않고 바로 exception이 난다.
+ssh-add 를 사용해서 key를 등록한다. ssh-add ~/.ssh/company-ec2-keys.pem을 수행한다.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf249e0b" class="outline-4">
-<h4 id="orgf249e0b">git:create<sub>release</sub> master error</h4>
-<div class="outline-text-4" id="text-orgf249e0b">
+<div id="outline-container-org7297410" class="outline-4">
+<h4 id="org7297410">git:check error-permission denied error</h4>
+<div class="outline-text-4" id="text-org7297410">
+<p width="800px">
+<img src="./img/cap2.png" alt="cap2.png" width="800px" />
+   =&gt; ssh-add ~/.ssh/id-rsa 를 해보면 될 수 있다.
+</p>
+</div>
+</div>
+<div id="outline-container-org6feedab" class="outline-4">
+<h4 id="org6feedab">git:create<sub>release</sub> master error</h4>
+<div class="outline-text-4" id="text-org6feedab">
 <p>
 =&gt; set branch main in deploy.rb
 </p>
 </div>
 </div>
-<div id="outline-container-org188fae4" class="outline-4">
-<h4 id="org188fae4">bundle:install</h4>
-<div class="outline-text-4" id="text-org188fae4">
+<div id="outline-container-orga156d2d" class="outline-4">
+<h4 id="orga156d2d">bundle:install</h4>
+<div class="outline-text-4" id="text-orga156d2d">
 <p>
 =&gt; [arm64-darwin-20] but your local platform is x86<sub>64</sub>-linux
 </p>
-<p width="400px">
-<img src="./img/deploy_local.png" alt="deploy_local.png" width="400px" />
-위와 같이 local에서 capistrano를 실행하면, 이런 에러가 발생된다. 이것의 원인은 capistrano처리중에 github에서 rails app source를 가지고 와서 배포서버의 release폴더에 넣은 후에 bundler를 실행할 때 발생되는 에러같다. bundler가 Gemfile.lock을 실행하는 데 Platform이 local에서는 arm64-darwin-20은 정해져 있으나, x86-64-linux가 기술되어 있지 않다는 것이다. local에서는 bundle lock &#x2013;add-platform x86<sub>64</sub>-linux를 실행해서 변경할 수 있다고 하는데, Gemfile.lock에서 x86<sub>64</sub>-linux가 추가된 것을 확인할 수 있다. 그런데 실제 배포server의 release폴더에 있는 Gemfile.lock에는 반영되지 않은 것을 볼 수 있다. 이것의 원인을 찾고자, 배포 서버에 접속해서 log를 살펴보았다.
+<p width="800px">
+   <img src="./img/deploy_local.png" alt="deploy_local.png" width="800px" />
+이것의 원인은 capistrano처리중에 github에서 rails app source를 가지고 와서 배포서버의 release폴더에 넣은 후에 bundler를 실행할 때 발생되는 에러같다. bundler가 Gemfile.lock을 실행하는 데 Platform이 local에서는 arm64-darwin-20은 정해져 있으나, x86-64-linux가 기술되어 있지 않다는 것이다. local에서는 bundle lock &#x2013;add-platform x86<sub>64</sub>-linux를 실행해서 변경할 수 있다고 하는데, Gemfile.lock에서 x86<sub>64</sub>-linux가 추가된 것을 확인할 수 있다. 그런데 실제 배포server의 release폴더에 있는 Gemfile.lock에는 반영되지 않은 것을 볼 수 있다. 이것의 원인을 찾고자, 배포 서버에 접속해서 log를 살펴보았다.
 </p>
 <blockquote>
 <p>
@@ -725,19 +778,280 @@ less /home/deploy/myapp/current/log/production.log
 별다른 내용은 없었다. 그래서 release폴더에서 bundle을 실행했고, bundle lock &#x2013;add-platform x86<sub>64</sub>-linux를 실행했다. 그랬더니 다음과 같은 에러가 발생했다.
 </p>
 
-<div id="orgbc93c61" class="figure">
-<p><img src="./img/deploy_server.png" alt="deploy_server.png" width="400px" />
+<div id="org613056d" class="figure">
+<p><img src="./img/deploy_server.png" alt="deploy_server.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 23: </span>deploy 배포서버</p>
 </div>
+
+<p>
+이 에러는 nokogiri를 설치할때 발생되는 에러같다. gorails에서 처음에 nokogiri를 설정할 때 처리해야 할 것들이 적힌곳이 있다. 그것과 관련이 있는지는 모르겠다. Gemfile과 Gemfile.lock은 구조가 많이 다르다. Gemfile에는 몇개의 package만 적혀 있고, Gemfile.lock에는 Gemfile에서 명시했던 package를 구성하는 세부 package들이 버전별로 나열되어 있는거 같다. nokogiri란 package는 Gemfile에는 기술 되어 있지 않으나, Gemfile.lock에는 기술되어 있는거 같다.
+</p>
+
+<p>
+=&gt; 해결책
+우선 cap production deploy할 때, 배포 서버에서 실행하는것은 무조건 github의 내용이다. 만일 local에서 무언가를 고치거나, 수정했다면, github에 commit한 후에 cap production deploy를 해야할 듯하다.
+</p>
 </div>
+</div>
+</div>
+
+<div id="outline-container-org509744f" class="outline-3">
+<h3 id="org509744f"><span class="section-number-3">1.11</span> bundler:install, Failed to build gem native extension</h3>
+<div class="outline-text-3" id="text-1-11">
+<p width="800px">
+<img src="./img/bundle_error.png" alt="bundle_error.png" width="800px" />
+이 문제에 대한 처리 과정은 다음과 같다.
+</p>
+<p width="800px">
+<img src="./img/extsolution1.png" alt="extsolution1.png" width="800px" />\
+</p>
+
+<p>
+우선 위에 적힌대로 해보자. 그런데, 근본적인
+문제는 mysql2 설치 문제다. 배포 서버에 들어가서 mysql2를 설치해 보자.
+동일한 에러가 발생한다.
+</p>
+<p width="800px">
+<img src="./img/mysql2error.png" alt="mysql2error.png" width="800px" />
+=&gt; 해결 :  sudo apt-get install libmysqlclient-dev를 설치하니 무사히 설치되었다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfe3bd3c" class="outline-3">
+<h3 id="orgfe3bd3c"><span class="section-number-3">1.12</span> deploy:migrating error</h3>
+<div class="outline-text-3" id="text-1-12">
+<p width="800px">
+   <img src="./img/mysqlhosterror.png" alt="mysqlhosterror.png" width="800px" />
+우선 mysql관련 설정환경을 배포 서버의 .rbenv-vars파일에 기술했었는데, 그게 문제일 수도 있다는 생각이 들었다. capistrano가 db에 접속을 해야 하는데, 접속은 URL로 하고, URL정보는 .rbenv-vars파일에 기술했기 때문이다. 그래서 다음과 같이 .rbenv-vars파일을 변경해 보았다.
+</p>
+<blockquote>
+<p>
+vi <i>home/deploy/myapp</i>.rbenv-vars
+DATABASE<sub>URL</sub>=mysql2://deploy@localhost:/myapp
+</p>
+</blockquote>
+<p>
+다른 에러가 발생했다.
+</p>
+
+
+<div id="orgf295fd5" class="figure">
+<p><img src="./img/mysqlsocketerror.png" alt="mysqlsocketerror.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 24: </span>mysqlsocketerror</p>
+</div>
+
+<p>
+배포 서버에서 mysql이 제대로 설치 되지 않은거 같다. 그래서 gorails에서 나온대로 다시 mysql-server, myssql-client, libmysqlclient-dev를 설치해본다. mysql-server 설치에 문제가 있음을 알 수 있었다. 여튼 설치를 끝내고,  sudo mysql<sub>secure</sub><sub>installation를</sub> 실행하면 다음과 같은 에러가 있음을 알 수 있다.
+</p>
+
+
+<div id="org95fa37e" class="figure">
+<p><img src="./img/secure_connection.png" alt="secure_connection.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 25: </span>secure<sub>connection</sub></p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org654ed87" class="outline-3">
+<h3 id="org654ed87"><span class="section-number-3">1.13</span> db관련 에러가 계속해서 나올경우</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+mysql과 mariadb를 모두 삭제한다.
+</p>
+<blockquote>
+<p>
+ apt-get remove &#x2013;purge mysql*
+apt-get remove &#x2013;purge mysql
+apt-get remove &#x2013;purge mariadb
+apt-get remove &#x2013;purge mariadb*
+apt-get &#x2013;purge remove mariadb-server
+apt-get &#x2013;purge remove python-software-properties
+</p>
+</blockquote>
+<p>
+한번에 삭제가 안되면 한 두번 실행한다.
+</p>
+
+<p>
+그리고 다시 mariadb를 설치해본다. 설치과정은 다음과 같다.
+</p>
+<blockquote>
+<p>
+sudo apt-get install -y mariadb-server mariadb server를 설치한다.
+sudo apt-get install -y mariadb-client mariadb client를 설치한다.
+sudo apt-get install -y libmariadbclient-dev
+</p>
+</blockquote>
+<p>
+그리고 cap production deploy를 하면 또 다시 다른 에러가 나온다.
+</p>
+
+<div id="org2da200a" class="figure">
+<p><img src="./img/socketerror2.png" alt="socketerror2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 26: </span>socket error</p>
+</div>
+
+<p>
+이것은 /tmp/mysql.sock을 찾을 수 없다는 건데, database.yml에 보면 socket정보가 tmp/mysql.sock에 있기 때문이다. 실제 배포 서버는 socket이 저장되는 위치는 var/run/mysqld/mysql.sock이다. 그래서 이것을 바꿔줘야 하는데, database.yml에서 바꿔준 다음 반드시 github에 반영해야 한다. 왜냐면 capistrano는 github의 내용을 바탕으로 실행하기 때문이다.
+</p>
+
+<p>
+그러면 socket 문제는 해결된다. 하지만, Access denied 문제가 발생된다.
+</p>
+
+<div id="org00ddb4d" class="figure">
+<p><img src="./img/socketerror3.png" alt="socketerror3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 27: </span>socket</p>
+</div>
+
+<p>
+db에 deploy계정이 있는지 확인해 본다. 또한 myapp이란 db가 있는지도 확인해 본다.
+myapp이란 db에 deploy가 접근할수 있도록 권한을 부여해야 하기 때문이다.
+없으면 만든다.
+</p>
+<blockquote>
+<p>
+sudo mysql -uroot -p
+show databases;  //check if myapp db exists
+ use mysql  
+select User, Plugin, Host from user;  //check if deploy account exists
+drop user 'deploy'@'localhost'; or drop user 'deploy'@'';
+CREATE DATABASE IF NOT EXISTS myapp;
+CREATE USER IF NOT EXISTS 'deploy'@'localhost' IDENTIFIED BY '$omeFancyPassword123';
+CREATE USER IF NOT EXISTS 'deploy'@'%' IDENTIFIED BY '$omeFancyPassword123';
+GRANT ALL PRIVILEGES ON myapp.* TO 'deploy'@'localhost';
+GRANT ALL PRIVILEGES ON myapp.* TO 'deploy'@'%';
+FLUSH PRIVILEGES;
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org2c29e82" class="outline-3">
+<h3 id="org2c29e82"><span class="section-number-3">1.14</span> cap production deploy 하자마자 sshkit error</h3>
+<div class="outline-text-3" id="text-1-14">
+<p width="800px">
+<img src="./img/capproduction.png" alt="capproduction.png" width="800px" />
+이것은 aws pem키가 등록되지 않았다는 에러다. ssh-add ~/.ssh/company-ec2-keys.pem로 등록을 해야 한다. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2c41099" class="outline-3">
+<h3 id="org2c41099"><span class="section-number-3">1.15</span> git permission error</h3>
+<div class="outline-text-3" id="text-1-15">
+<p width="800px">
+<img src="./img/gitcheckerror.png" alt="gitcheckerror.png" width="800px" />
+이것은 git ssh public key가 등록되지 않았다는 에러다. ssh-add ~/.ssh/id<sub>rsa로</sub> 등록을 해준다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2d4d33a" class="outline-3">
+<h3 id="org2d4d33a"><span class="section-number-3">1.16</span> phusion messager is not running</h3>
+<div class="outline-text-3" id="text-1-16">
+
+<div id="org763f1f5" class="figure">
+<p><img src="./img/passengererror0.png" alt="passengererror0.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 28: </span>passenger error</p>
+</div>
+
+<p>
+cap production deploy했을때 별다른 이상없이 통과되어 해당 web server로 접속하면, 위와 같은 에러가 발생되는데, 다시 cap production deploy 진행과정을 보니 다음과 같은 문제가 있었다.
+</p>
+
+<div id="org631d2e1" class="figure">
+<p><img src="./img/passengererror.png" alt="passengererror.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 29: </span>passenger error</p>
+</div>
+
+
+<div id="orgb2098ee" class="figure">
+<p><img src="./img/passengererror3.png" alt="passengererror3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 30: </span>passenger error3</p>
+</div>
+
+<p>
+그래서 /va/log/nginx/error.log로 가서 어떤 에러인지 확인해봤다.
+</p>
+
+<div id="org1bb2897" class="figure">
+<p><img src="./img/passengerlog.png" alt="passengerlog.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 31: </span>passenger error</p>
+</div>
+
+<p>
+근데 찝찝했던건, gorails에서 세팅을 제대로 하지 않았다는 것이다.
+</p>
+
+<div id="orgba6887e" class="figure">
+<p><img src="./img/gorails.png" alt="gorails.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 32: </span>gorails settings</p>
+</div>
+
+<p>
+=&gt; 해결
+배포서버로 접속해서 myapp/.rbenv-vars파일을 만들고 그냥 복사 붙여넣기 했다.
+그게 좀 찝찝해서 database<sub>url도</sub> 변경하고, 어디서 보고 변경했는지는 잘 기억이 안나지만, 그것도 변경하고, RAILS<sub>MASTER</sub><sub>KEY도</sub> ohai가 아닌, myapp/config/master.key파일을 읽고 그 hash값을 붙여넣으니 문제가 해결되었다. 정확한 내용은 모르지만, 접속관련한 중요한 사항들을 secret.yml에 넣었다고 한다. 이 secret.yml이 버전이 올라가면서 변경된 것이다. 왜냐하면 rails에서 app을 만들자마자 git을 만들고, 배포를 위해서 github에 저장하는데, 접속정보는 중요한 파일이라서 github에 그대로 노출될 수 있기 때문이다. 그래서 예전에는 개발자가 gitignore로 github에 올라가지 않게 했는데, 보안 문제로 이번에 완전 바꾼거다. .authinfo.gpg를 만들고 저장하면, 저장한게 자동으로 암호화 되어, gpg key가 있어야 편집이 가능하듯이, 접속정보를 가지고 있는 credentials.yml.enc는 암호화되어 있고, master key가 있어야 접근할 수 있는 구조다. 그래서 배포를 하는 capistrano는 master key정보가 있어야 한다. 이것을 배포 서버의 myapp/.rbenv-vars파일의  mastser<sub>key변수에</sub> 넣어주면, capistrano는 credentials.yml.enc에 접근할수 있는 것이다. 그러면 위에 적힌 SECRET<sub>BASE는</sub> 어떻게 설정하는가?
+</p>
+
+<p>
+우선 credentials.yml.enc를 편집하는 방법을 보자. local에서 myapp/config로 들어간 이후,
+</p>
+<blockquote>
+<p>
+EDITOR=vim rails credentials:edit
+</p>
+</blockquote>
+<p>
+이렇게 하면 credentials를 읽을 수 있다.
+</p>
+<p width="800px">
+<img src="./img/credentials.png" alt="credentials.png" width="800px" />
+그리고 secret<sub>key</sub><sub>base를</sub> 볼 수 있다. 이것을 복사해서 배포서버로 가서 붙여넣기 한다.
+</p>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orga42fa26" class="outline-3">
+<h3 id="orga42fa26"><span class="section-number-3">1.17</span> nginx log위치 [ubuntu]</h3>
+<div class="outline-text-3" id="text-1-17">
+<blockquote>
+<p>
+/var/log/nginx/error.log
+tails -f /var/log/nginx/error.log
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-org3c609c5" class="outline-3">
+<h3 id="org3c609c5"><span class="section-number-3">1.18</span> passenger log file</h3>
+<div class="outline-text-3" id="text-1-18">
+<p>
+passenger가 nginx에 통합되어 설치되어 있어서 동일한 log를 사용한다고 보면 된다.
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Hoyoul Park</p>
-<p class="date">Created: 2021-07-15 Thu 16:00</p>
+<p class="date">Created: 2021-07-18 Sun 12:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -219,9 +219,12 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
     #+end_quote
 
 2) sudo apt-get install -y mariadb-server
-mariadb server를 설치한다.
-3) sudo mysql_secure_installation
-root pw를 설정한다.
+   mariadb server를 설치한다.
+3) sudo apt-get install -y mariadb-client
+   mariadb client를 설치한다.
+4) sudo apt-get install -y libmariadbclient-dev
+5) sudo mysql_secure_installation
+      root pw를 설정한다.
       1. password를 묻는다. 이것은 system password, sudo에 대한..그래서 1234를 입력
       2. validation production : y
       3. root pw 입력:root1234, 참고로 deploy계정은 pw:user1234
@@ -229,7 +232,7 @@ root pw를 설정한다.
       5. remote :n
       6. testdb delete :y
       7. privileges table reload: y
-4) sudo mysql -u root -p
+6) sudo mysql -u root -p
    mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.
 #+CAPTION: mysql connection
 #+NAME: mysql
@@ -237,30 +240,56 @@ root pw를 설정한다.
 #+attr_latex: :width 100px
 [[./img/connection.png]]
 
-5) mariadb에서 database와 user를 만든다.
+7) mariadb에서 database와 user를 만든다.
 #+CAPTION: db & user
 #+NAME: db & user
 #+attr_html: :width 400px
 #+attr_latex: :width 100px
 [[./img/db_create.png]]
 
+rails app도 myapp으로 했지만, db에서 database도 myapp으로 통일한다.
+aws에서 만든 계정인 deploy를 db에서도 접근할 수 있게 db에도 만든다.
+
+
 ** Capistrano설정
+*** capistrano의 일반적 처리과정.
+#+CAPTION: capistrano
+#+NAME: capistrano
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/capistranod.png]]
+1) aws(배포서버)에 접속할 pem이 있는지 확인. pem이 있다면 접속한다.
+2) git을 접속할수 있는지 확인(ssh permission), ssh key가 있다면 접속
+3) git source를 배포 서버에 복사 (이 과정이 git:check, git:install....)
+4) Gem을 bundler를 이용해서 설치(이 과정이 bundler:check, bundler:install...)
+5) nginx를  restart
+
 *** Gemfile 설정
-Local로 다시 들어간다. myapp으로 간다. Gemfiles에 다음을 추가한다.
+Local로 다시 들어간다. myapp으로 간다. Gemfiles에 다음을 추가한다. 추가할 때 group :development에 할당하자.
+이 과정은 capistrano package를 설치하겠다는 것이다.
  #+begin_quote
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
     #+end_quote
- cap명령어를 실행하나 수행되지 않을 때는 rbenv rehash를 하고 다시 실행한다.
+이렇게 작성 하고  다음을 실행한다.
+ #+begin_quote
+ bundle
+ cap install STAGES=production
+ #+end_quote
+bundle을 실행하면, gemfile에 기술된 gem들이 install된다. capistrano도 installed되어서 cap이란 명령어를 실행할 수 있다.
+cap install을 실행하면, deploy를 위한 설정 파일(.rb)들을 만들어 낸다. 
+만일 cap명령어를 실행하나 수행되지 않을 때는 rbenv rehash를 하고 다시 실행한다.
  #+CAPTION: rehash
  #+NAME: rehash
  #+attr_html: :width 400px
  #+attr_latex: :width 100px
  [[./img/rehash.png]]
+cap으로 만들어지는 파일은 capfile, deploy.rb, staging.rb,production.rb같은 deploy같은 설정파일들이다.
+ 
 *** Capfile 설정
-이렇게 하면 capfile을 만든다. 그리고 capfile에 다음을 추가한다.
+capfile은 배포설정 파일을 load할 뿐이다. 실제 설정은 load되는 파일에서 한다.
  #+begin_quote
 require 'capistrano/rails'
 require 'capistrano/passenger'
@@ -269,15 +298,29 @@ require 'capistrano/rbenv'
 set :rbenv_type, :user
 set :rbenv_ruby, '3.0.1'
  #+end_quote
+
 *** config/deploy.rb 설정
 #+CAPTION: deploy settings
 #+NAME: deploy septtings
-#+attr_html: :width 400px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/deploysettings.png]]
 ** Capistrano Error
-***  git access denied error
-   => ssh-add ~/.ssh/id-rsa
+*** Thread error
+#+CAPTION: thread
+#+NAME: thread
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cap1.png]]
+=> cap은 aws에 접근할 수 있는 pem키가 없다면, cap이 진행되지 않고 바로 exception이 난다.
+ssh-add 를 사용해서 key를 등록한다. ssh-add ~/.ssh/company-ec2-keys.pem을 수행한다.
+***  git:check error-permission denied error
+#+CAPTION: cap2
+#+NAME: cap2
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cap2.png]]
+   => ssh-add ~/.ssh/id-rsa 를 해보면 될 수 있다.
 *** git:create_release master error
    => set branch main in deploy.rb
 *** bundle:install
@@ -303,15 +346,252 @@ set :rbenv_ruby, '3.0.1'
 => 해결책
 우선 cap production deploy할 때, 배포 서버에서 실행하는것은 무조건 github의 내용이다. 만일 local에서 무언가를 고치거나, 수정했다면, github에 commit한 후에 cap production deploy를 해야할 듯하다.
 
-** bundler:install에서 extconf.rb failed problem
-#+CAPTION: extconf
+** bundler:install, Failed to build gem native extension
+#+CAPTION:  *** extconf.rb failed ***
 #+NAME: extconf
-#+attr_html: :width 400px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
-[[./img/extconf.png]]
-이문제는 좀 더 살펴봐야겠다.
+[[./img/bundle_error.png]]
+이 문제에 대한 처리 과정은 다음과 같다.
+#+CAPTION: ext solution
+#+NAME: ext solution
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/extsolution1.png]]\
 
+우선 위에 적힌대로 해보자. 그런데, 근본적인
+문제는 mysql2 설치 문제다. 배포 서버에 들어가서 mysql2를 설치해 보자.
+동일한 에러가 발생한다.
+#+CAPTION: mysql2 error
+#+NAME: mysql2 error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/mysql2error.png]]
+=> 해결 :  sudo apt-get install libmysqlclient-dev를 설치하니 무사히 설치되었다.
 
-   
+** deploy:migrating error
+   #+CAPTION: mysqlhosterror
+   #+NAME: mysqlhosterror
+   #+attr_html: :width 800px
+   #+attr_latex: :width 100px
+   [[./img/mysqlhosterror.png]]
+우선 mysql관련 설정환경을 배포 서버의 .rbenv-vars파일에 기술했었는데, 그게 문제일 수도 있다는 생각이 들었다. capistrano가 db에 접속을 해야 하는데, 접속은 URL로 하고, URL정보는 .rbenv-vars파일에 기술했기 때문이다. 그래서 다음과 같이 .rbenv-vars파일을 변경해 보았다.
+ #+begin_quote
+ vi /home/deploy/myapp/.rbenv-vars
+ DATABASE_URL=mysql2://deploy@localhost:/myapp
+ #+end_quote
+다른 에러가 발생했다.
+
+#+CAPTION: mysqlsocketerror
+#+NAME: mysqlsocketerror
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/mysqlsocketerror.png]]
+
+배포 서버에서 mysql이 제대로 설치 되지 않은거 같다. 그래서 gorails에서 나온대로 다시 mysql-server, myssql-client, libmysqlclient-dev를 설치해본다. mysql-server 설치에 문제가 있음을 알 수 있었다. 여튼 설치를 끝내고,  sudo mysql_secure_installation를 실행하면 다음과 같은 에러가 있음을 알 수 있다.
+
+#+CAPTION: secure_connection
+#+NAME: secure_connection
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/secure_connection.png]]
+
+** db관련 에러가 계속해서 나올경우
+mysql과 mariadb를 모두 삭제한다.
+ #+begin_quote
+ apt-get remove --purge mysql*
+apt-get remove --purge mysql
+apt-get remove --purge mariadb
+apt-get remove --purge mariadb*
+apt-get --purge remove mariadb-server
+apt-get --purge remove python-software-properties
+ #+end_quote
+한번에 삭제가 안되면 한 두번 실행한다.
+
+그리고 다시 mariadb를 설치해본다. 설치과정은 다음과 같다.
+ #+begin_quote
+sudo apt-get install -y mariadb-server mariadb server를 설치한다.
+sudo apt-get install -y mariadb-client mariadb client를 설치한다.
+sudo apt-get install -y libmariadbclient-dev
+ #+end_quote
+그리고 cap production deploy를 하면 또 다시 다른 에러가 나온다.
+#+CAPTION: socket error
+#+NAME: socket error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/socketerror2.png]]
+
+이것은 /tmp/mysql.sock을 찾을 수 없다는 건데, database.yml에 보면 socket정보가 tmp/mysql.sock에 있기 때문이다. 실제 배포 서버는 socket이 저장되는 위치는 var/run/mysqld/mysql.sock이다. 그래서 이것을 바꿔줘야 하는데, database.yml에서 바꿔준 다음 반드시 github에 반영해야 한다. 왜냐면 capistrano는 github의 내용을 바탕으로 실행하기 때문이다.
+
+그러면 socket 문제는 해결된다. 하지만, Access denied 문제가 발생된다.
+#+CAPTION: socket
+#+NAME: socket
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/socketerror3.png]]
+
+db에 deploy계정이 있는지 확인해 본다. 또한 myapp이란 db가 있는지도 확인해 본다.
+myapp이란 db에 deploy가 접근할수 있도록 권한을 부여해야 하기 때문이다.
+없으면 만든다.
+ #+begin_quote
+ sudo mysql -uroot -p
+ show databases;  //check if myapp db exists
+  use mysql  
+ select User, Plugin, Host from user;  //check if deploy account exists
+ drop user 'deploy'@'localhost'; or drop user 'deploy'@'';
+ CREATE DATABASE IF NOT EXISTS myapp;
+ CREATE USER IF NOT EXISTS 'deploy'@'localhost' IDENTIFIED BY '$omeFancyPassword123';
+ CREATE USER IF NOT EXISTS 'deploy'@'%' IDENTIFIED BY '$omeFancyPassword123';
+ GRANT ALL PRIVILEGES ON myapp.* TO 'deploy'@'localhost';
+ GRANT ALL PRIVILEGES ON myapp.* TO 'deploy'@'%';
+ FLUSH PRIVILEGES;
+  #+end_quote
+
+**  cap production deploy 하자마자 sshkit error
+#+CAPTION: capproduction error
+#+NAME: cap production error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/capproduction.png]]
+이것은 aws pem키가 등록되지 않았다는 에러다. ssh-add ~/.ssh/company-ec2-keys.pem로 등록을 해야 한다. 
+
+** git permission error
+#+CAPTION: git check error
+#+NAME: git check error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/gitcheckerror.png]]
+이것은 git ssh public key가 등록되지 않았다는 에러다. ssh-add ~/.ssh/id_rsa로 등록을 해준다.
+
+** phusion messager is not running
+#+CAPTION: passenger error
+#+NAME: passenger error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/passengererror0.png]]
+
+cap production deploy했을때 별다른 이상없이 통과되어 해당 web server로 접속하면, 위와 같은 에러가 발생되는데, 다시 cap production deploy 진행과정을 보니 다음과 같은 문제가 있었다.
+#+CAPTION: passenger error 
+#+NAME: passenger error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/passengererror.png]]
+
+#+CAPTION: passenger error3
+#+NAME: passenger3
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/passengererror3.png]]
+
+그래서 /va/log/nginx/error.log로 가서 어떤 에러인지 확인해봤다.
+#+CAPTION: passenger error
+#+NAME: passenger log error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/passengerlog.png]]
+
+근데 찝찝했던건, gorails에서 세팅을 제대로 하지 않았다는 것이다.
+#+CAPTION: gorails settings
+#+NAME: go rails settings
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/gorails.png]]
+
+=> 해결
+배포서버로 접속해서 myapp/.rbenv-vars파일을 만들고 그냥 복사 붙여넣기 했다.
+그게 좀 찝찝해서 database_url도 변경하고, 어디서 보고 변경했는지는 잘 기억이 안나지만, 그것도 변경하고, RAILS_MASTER_KEY도 ohai가 아닌, myapp/config/master.key파일을 읽고 그 hash값을 붙여넣으니 문제가 해결되었다. 정확한 내용은 모르지만, 접속관련한 중요한 사항들을 secret.yml에 넣었다고 한다. 이 secret.yml이 버전이 올라가면서 변경된 것이다. 왜냐하면 rails에서 app을 만들자마자 git을 만들고, 배포를 위해서 github에 저장하는데, 접속정보는 중요한 파일이라서 github에 그대로 노출될 수 있기 때문이다. 그래서 예전에는 개발자가 gitignore로 github에 올라가지 않게 했는데, 보안 문제로 이번에 완전 바꾼거다. .authinfo.gpg를 만들고 저장하면, 저장한게 자동으로 암호화 되어, gpg key가 있어야 편집이 가능하듯이, 접속정보를 가지고 있는 credentials.yml.enc는 암호화되어 있고, master key가 있어야 접근할 수 있는 구조다. 그래서 배포를 하는 capistrano는 master key정보가 있어야 한다. 이것을 배포 서버의 myapp/.rbenv-vars파일의  mastser_key변수에 넣어주면, capistrano는 credentials.yml.enc에 접근할수 있는 것이다. 그러면 위에 적힌 SECRET_BASE는 어떻게 설정하는가?
+
+우선 credentials.yml.enc를 편집하는 방법을 보자. local에서 myapp/config로 들어간 이후,
+ #+begin_quote
+ EDITOR=vim rails credentials:edit
+ #+end_quote
+이렇게 하면 credentials를 읽을 수 있다.
+#+CAPTION: credentials
+#+NAME: credentials
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/credentials.png]]
+그리고 secret_key_base를 볼 수 있다. 이것을 복사해서 운영서버로 가서 myapp/.rbenv-vars에 붙여넣기 한다.
+
+이렇게 하고 cap production deploy를 실행해보자.
+#+CAPTION: result1
+#+NAME: result1
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/final_deploy1.png]]
+#+CAPTION: result2
+#+NAME: result2
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/final_deploy2.png]]
+#+CAPTION: result3
+#+NAME: result3
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/final_deploy3.png]]
+#+CAPTION: result4
+#+NAME: result4
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/final_deploy4.png]]
+#+CAPTION: result5
+#+NAME: result5
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/final_deploy5.png]]
+
+이제 http://3.34.94.252 에 접속해 보자.
+다음과 같은 에러가 나온다.
+#+CAPTION: error
+#+NAME: error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/error.png]]
+
+에러의 원인을 찾아보기 위해서 운영서버의 /myapp/log/production.log를 보면 다음과 같은 에러가 있다.
+#+CAPTION: routing error
+#+NAME: routing error
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/routingerror.png]]
+
+routing error다. 이것은 routes.rb에 처리하는 루틴이 없기 때문이다. 그런데 local에서는 routes.rb에 처리 루틴이 없는데도 welcome page가 보인다.  무슨 차이가 있는지 모르겠지만, capistrano를 통해서 운영서버에 배포하고 연결을 시도 했을 때는 welcome page가 보이지 않는다.  그래서 간단히 hello world를 출력하는 코드를 만들어봤다.
+
+*** routes.rb
+ #+begin_quote
+  get "/articles", to: "articles#index"
+ #+end_quote
+*** rails g controller 
+ #+begin_quote
+ rails g controller Articles index --skip-routes
+ #+end_quote
+*** index.html.erb
+ #+begin_quote
+ <h1> hello hoyoul</h1>
+ #+end_quote
+
+ 위와 같이 하고 github에 저장한후 cap production deploy를 사용해서 운영서버에 배포한후 url로 접근하면 해당 페이지를 볼 수 있다.
+ #+CAPTION: hello
+ #+NAME: hello
+ #+attr_html: :width 800px
+ #+attr_latex: :width 100px
+ [[./img/hello .png]]
+ 
+** nginx 설정과  log위치 [ubuntu]
+ #+begin_quote
+/etc/nginx/nginx.conf [설정]
+ /var/log/nginx/error.log [log]
+tails -f /var/log/nginx/error.log
+ #+end_quote
+nginx는 일반적인 설정을 한뒤 가상 호스트를 위한 설정 파일을 실행한다.
+ #+begin_quote
+ /etc/nginx/sites-enabled/myapp
+ #+end_quote
+을 실행한다.
+** passenger log file
+passenger가 nginx에 통합되어 설치되어 있어서 동일한 log를 사용한다고 보면 된다.
+* rails 개발 참조 사이트
+- [[https://gorails.com][gorails]] : 설치, deploy 관련 sites
+- [[https://rubyonrails.org][rubyonrails]]: ruby on rails 개발 sites
 
 
