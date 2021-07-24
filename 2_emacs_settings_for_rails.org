@@ -39,6 +39,13 @@
    #+begin_quote
    (setq rbenv-installation-dir "/opt/homebrew/rbenv")
    #+end_quote
+** Projectile-rails
+ #+begin_quote
+ C-c r c : Controllers
+ C-c r v : Views
+ C-c r m : Models
+ #+end_quote
 
-
- 
+#+begin_note
+C-c r !g : generate
+#+end_note
