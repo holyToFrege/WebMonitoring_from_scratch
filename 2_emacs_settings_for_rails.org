@@ -40,6 +40,7 @@
    (setq rbenv-installation-dir "/opt/homebrew/rbenv")
    #+end_quote
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 ** Projectile-rails
  #+begin_quote
  C-c r c : Controllers
@@ -51,6 +52,8 @@
 C-c r !g : generate
 #+end_note
 =======
+=======
+>>>>>>> Stashed changes
 ** inf-ruby
 #+begin_note
 Ruby Repl이다.

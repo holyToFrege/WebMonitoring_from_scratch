@@ -4,7 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <!-- 2021-07-21 Wed 09:35 -->
+=======
+<!-- 2021-07-25 Sun 18:48 -->
+>>>>>>> Stashed changes
 =======
 <!-- 2021-07-25 Sun 18:48 -->
 >>>>>>> Stashed changes
@@ -237,6 +241,7 @@
 <div id="text-table-of-contents">
 <ul>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <li><a href="#org7d41d69">1. AWS EC2 Server Settings</a>
 <ul>
 <li><a href="#orgd01a83a">1.1. EC2 생성</a></li>
@@ -352,6 +357,69 @@
 <div id="outline-container-org5d41c00" class="outline-3">
 <h3 id="org5d41c00"><span class="section-number-3">1.1</span> EC2 생성</h3>
 >>>>>>> Stashed changes
+=======
+<li><a href="#org985c499">1. AWS EC2와 Web Server Settings(ROR)</a>
+<ul>
+<li><a href="#org5d41c00">1.1. EC2 생성</a></li>
+<li><a href="#org491a8df">1.2. SSH 접속 settings</a></li>
+<li><a href="#orged250ab">1.3. root password설정과 root로 ssh 연결</a></li>
+<li><a href="#orgd3392ed">1.4. deploy를 위한 계정 설정</a></li>
+<li><a href="#org56abcef">1.5. ruby 설정 (deploy계정으로)</a></li>
+<li><a href="#org8b1be73">1.6. bundler설정</a></li>
+<li><a href="#org5485e46">1.7. Nginx &amp; Passenger 설정</a></li>
+<li><a href="#org0f497b0">1.8. Mariadb Database 설치하기</a></li>
+<li><a href="#org445fd6c">1.9. Capistrano설정</a>
+<ul>
+<li><a href="#org7c8c613">capistrano의 일반적 처리과정.</a></li>
+<li><a href="#orga3b7a2b">Gemfile 설정</a></li>
+<li><a href="#org69f3d62">Capfile 설정</a></li>
+<li><a href="#orge153c09">config/deploy.rb 설정</a></li>
+</ul>
+</li>
+<li><a href="#org322ed97">1.10. Capistrano Error</a>
+<ul>
+<li><a href="#orgb89b893">Thread error</a></li>
+<li><a href="#orga916319">git:check error-permission denied error</a></li>
+<li><a href="#org5179ef7">git:create<sub>release</sub> master error</a></li>
+<li><a href="#org77af25c">bundle:install</a></li>
+</ul>
+</li>
+<li><a href="#org4bc7938">1.11. bundler:install, Failed to build gem native extension</a></li>
+<li><a href="#orgbaf0600">1.12. deploy:migrating error</a></li>
+<li><a href="#org441634e">1.13. db관련 에러가 계속해서 나올경우</a></li>
+<li><a href="#org2cfd0dc">1.14. cap production deploy 하자마자 sshkit error</a></li>
+<li><a href="#orga21b4cd">1.15. git permission error</a></li>
+<li><a href="#org0a1cb62">1.16. phusion messager is not running</a>
+<ul>
+<li><a href="#orgb3c1211">routes.rb</a></li>
+<li><a href="#org96b5daa">rails g controller</a></li>
+<li><a href="#orgbdb37bb">index.html.erb</a></li>
+</ul>
+</li>
+<li><a href="#org92cea68">1.17. nginx 설정과  log위치 [ubuntu]</a></li>
+<li><a href="#orgdc6be88">1.18. passenger log file</a></li>
+</ul>
+</li>
+<li><a href="#orgc2b18ab">2. AWS 계정 설정(root and IAM)</a>
+<ul>
+<li><a href="#org17ab347">2.1. root계정 처리</a></li>
+<li><a href="#orgc52775e">2.2. IAM 계정 처리(group and user)</a></li>
+</ul>
+</li>
+<li><a href="#org80263ac">3. AWS 고정 IP 설정</a></li>
+<li><a href="#org627c7fe">4. AWS DNS 주소 할당과정</a></li>
+<li><a href="#org00ab1fd">5. AWS domain주소와 EC2연동</a></li>
+<li><a href="#orgc3c33cf">6. rails 개발 참조 사이트</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org985c499" class="outline-2">
+<h2 id="org985c499"><span class="section-number-2">1</span> AWS EC2와 Web Server Settings(ROR)</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5d41c00" class="outline-3">
+<h3 id="org5d41c00"><span class="section-number-3">1.1</span> EC2 생성</h3>
+>>>>>>> Stashed changes
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>login한 후에 aws ec2를 만들자.
@@ -361,7 +429,11 @@
 </ul>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org4d29ad6" class="figure">
+=======
+<div id="org1b8be23" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org1b8be23" class="figure">
 >>>>>>> Stashed changes
@@ -375,7 +447,11 @@
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org56b1e3a" class="figure">
+=======
+<div id="org4a141f7" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org4a141f7" class="figure">
 >>>>>>> Stashed changes
@@ -389,7 +465,11 @@
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org559797f" class="figure">
+=======
+<div id="org8d397d6" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org8d397d6" class="figure">
 >>>>>>> Stashed changes
@@ -403,7 +483,11 @@
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orga0ec04f" class="figure">
+=======
+<div id="org73a3048" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org73a3048" class="figure">
 >>>>>>> Stashed changes
@@ -417,7 +501,11 @@
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org8fb0f64" class="figure">
+=======
+<div id="org30c2f91" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org30c2f91" class="figure">
 >>>>>>> Stashed changes
@@ -431,7 +519,11 @@
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org15e8ace" class="figure">
+=======
+<div id="org9e75671" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org9e75671" class="figure">
 >>>>>>> Stashed changes
@@ -443,8 +535,13 @@
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgbd43cdc" class="outline-3">
 <h3 id="orgbd43cdc"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
+=======
+<div id="outline-container-org491a8df" class="outline-3">
+<h3 id="org491a8df"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org491a8df" class="outline-3">
 <h3 id="org491a8df"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
@@ -458,7 +555,11 @@ ec2의 주소를 check한 후 ssh로 접속해보자.
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orge0bb17a" class="figure">
+=======
+<div id="org4e150b8" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org4e150b8" class="figure">
 >>>>>>> Stashed changes
@@ -476,7 +577,11 @@ aws에서 설정할 때 얻은 ssh pem 키와 주소를 사용해서 ssh접속�
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgf9d7893" class="figure">
+=======
+<div id="orgabc1e14" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="orgabc1e14" class="figure">
 >>>>>>> Stashed changes
@@ -488,17 +593,23 @@ aws에서 설정할 때 얻은 ssh pem 키와 주소를 사용해서 ssh접속�
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org51ac5a1" class="outline-3">
 <h3 id="org51ac5a1"><span class="section-number-3">1.3</span> root password설정과 root로 ssh 연결</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <div id="orgff0d25f" class="figure">
 =======
+=======
+>>>>>>> Stashed changes
 <div id="outline-container-orged250ab" class="outline-3">
 <h3 id="orged250ab"><span class="section-number-3">1.3</span> root password설정과 root로 ssh 연결</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <div id="org1a592eb" class="figure">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 <p><img src="./img/root_pw.png" alt="root_pw.png" width="1000px" />
 </p>
@@ -529,7 +640,11 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org944859c" class="figure">
+=======
+<div id="org0c15846" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org0c15846" class="figure">
 >>>>>>> Stashed changes
@@ -542,7 +657,11 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orga394e93" class="figure">
+=======
+<div id="org358b2c0" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org358b2c0" class="figure">
 >>>>>>> Stashed changes
@@ -554,8 +673,13 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org6b52568" class="outline-3">
 <h3 id="org6b52568"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
+=======
+<div id="outline-container-orgd3392ed" class="outline-3">
+<h3 id="orgd3392ed"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-orgd3392ed" class="outline-3">
 <h3 id="orgd3392ed"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
@@ -591,11 +715,19 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org2040841" class="outline-3">
 <h3 id="org2040841"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
 <div class="outline-text-3" id="text-1-5">
 
 <div id="orgf3b2694" class="figure">
+=======
+<div id="outline-container-org56abcef" class="outline-3">
+<h3 id="org56abcef"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<div id="org999b2b6" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org56abcef" class="outline-3">
 <h3 id="org56abcef"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
@@ -610,7 +742,11 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgcc3b314" class="figure">
+=======
+<div id="org014d79c" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org014d79c" class="figure">
 >>>>>>> Stashed changes
@@ -622,17 +758,23 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org5b282df" class="outline-3">
 <h3 id="org5b282df"><span class="section-number-3">1.6</span> bundler설정</h3>
 <div class="outline-text-3" id="text-1-6">
 
 <div id="orgaffdb17" class="figure">
 =======
+=======
+>>>>>>> Stashed changes
 <div id="outline-container-org8b1be73" class="outline-3">
 <h3 id="org8b1be73"><span class="section-number-3">1.6</span> bundler설정</h3>
 <div class="outline-text-3" id="text-1-6">
 
 <div id="orgec57c3f" class="figure">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 <p><img src="./img/bundler.png" alt="bundler.png" width="1000px" />
 </p>
@@ -642,11 +784,19 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org6891142" class="outline-3">
 <h3 id="org6891142"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
 <div class="outline-text-3" id="text-1-7">
 
 <div id="orgb4b1a4f" class="figure">
+=======
+<div id="outline-container-org5485e46" class="outline-3">
+<h3 id="org5485e46"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<div id="org3429ed8" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org5485e46" class="outline-3">
 <h3 id="org5485e46"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
@@ -674,7 +824,11 @@ sudo vi /etc/nginx/conf.d/mod-http-passenger.conf
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgce72c7e" class="figure">
+=======
+<div id="org9a88f8c" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org9a88f8c" class="figure">
 >>>>>>> Stashed changes
@@ -696,7 +850,11 @@ sudo service nginx start
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org0a2e335" class="figure">
+=======
+<div id="orga559eef" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="orga559eef" class="figure">
 >>>>>>> Stashed changes
@@ -710,7 +868,11 @@ sudo service nginx start
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org64cb491" class="figure">
+=======
+<div id="orgb5380be" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="orgb5380be" class="figure">
 >>>>>>> Stashed changes
@@ -753,8 +915,13 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org83c49c4" class="outline-3">
 <h3 id="org83c49c4"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
+=======
+<div id="outline-container-org0f497b0" class="outline-3">
+<h3 id="org0f497b0"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org0f497b0" class="outline-3">
 <h3 id="org0f497b0"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
@@ -791,7 +958,11 @@ mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.</li>
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org6dcd018" class="figure">
+=======
+<div id="org7b5de75" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org7b5de75" class="figure">
 >>>>>>> Stashed changes
@@ -805,7 +976,11 @@ mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.</li>
 </ol>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org5e9e6d6" class="figure">
+=======
+<div id="orgd43f957" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="orgd43f957" class="figure">
 >>>>>>> Stashed changes
@@ -823,6 +998,7 @@ aws에서 만든 계정인 deploy를 db에서도 접근할 수 있게 db에도 �
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org77c757d" class="outline-3">
 <h3 id="org77c757d"><span class="section-number-3">1.9</span> Capistrano설정</h3>
 <div class="outline-text-3" id="text-1-9">
@@ -832,6 +1008,17 @@ aws에서 만든 계정인 deploy를 db에서도 접근할 수 있게 db에도 �
 <div class="outline-text-4" id="text-orgdac0d46">
 
 <div id="orga75f259" class="figure">
+=======
+<div id="outline-container-org445fd6c" class="outline-3">
+<h3 id="org445fd6c"><span class="section-number-3">1.9</span> Capistrano설정</h3>
+<div class="outline-text-3" id="text-1-9">
+</div>
+<div id="outline-container-org7c8c613" class="outline-4">
+<h4 id="org7c8c613">capistrano의 일반적 처리과정.</h4>
+<div class="outline-text-4" id="text-org7c8c613">
+
+<div id="orgd4c3419" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org445fd6c" class="outline-3">
 <h3 id="org445fd6c"><span class="section-number-3">1.9</span> Capistrano설정</h3>
@@ -858,9 +1045,15 @@ aws에서 만든 계정인 deploy를 db에서도 접근할 수 있게 db에도 �
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org2811b0d" class="outline-4">
 <h4 id="org2811b0d">Gemfile 설정</h4>
 <div class="outline-text-4" id="text-org2811b0d">
+=======
+<div id="outline-container-orga3b7a2b" class="outline-4">
+<h4 id="orga3b7a2b">Gemfile 설정</h4>
+<div class="outline-text-4" id="text-orga3b7a2b">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-orga3b7a2b" class="outline-4">
 <h4 id="orga3b7a2b">Gemfile 설정</h4>
@@ -900,9 +1093,15 @@ cap으로 만들어지는 파일은 capfile, deploy.rb, staging.rb,production.rb
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgbc7458d" class="outline-4">
 <h4 id="orgbc7458d">Capfile 설정</h4>
 <div class="outline-text-4" id="text-orgbc7458d">
+=======
+<div id="outline-container-org69f3d62" class="outline-4">
+<h4 id="org69f3d62">Capfile 설정</h4>
+<div class="outline-text-4" id="text-org69f3d62">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org69f3d62" class="outline-4">
 <h4 id="org69f3d62">Capfile 설정</h4>
@@ -927,17 +1126,23 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgd475419" class="outline-4">
 <h4 id="orgd475419">config/deploy.rb 설정</h4>
 <div class="outline-text-4" id="text-orgd475419">
 
 <div id="orgdb17c0c" class="figure">
 =======
+=======
+>>>>>>> Stashed changes
 <div id="outline-container-orge153c09" class="outline-4">
 <h4 id="orge153c09">config/deploy.rb 설정</h4>
 <div class="outline-text-4" id="text-orge153c09">
 
 <div id="org62b6c09" class="figure">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 <p><img src="./img/deploysettings.png" alt="deploysettings.png" width="800px" />
 </p>
@@ -947,6 +1152,7 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgd893e1d" class="outline-3">
 <h3 id="orgd893e1d"><span class="section-number-3">1.10</span> Capistrano Error</h3>
 <div class="outline-text-3" id="text-1-10">
@@ -955,6 +1161,8 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 <h4 id="org34a67fb">Thread error</h4>
 <div class="outline-text-4" id="text-org34a67fb">
 =======
+=======
+>>>>>>> Stashed changes
 <div id="outline-container-org322ed97" class="outline-3">
 <h3 id="org322ed97"><span class="section-number-3">1.10</span> Capistrano Error</h3>
 <div class="outline-text-3" id="text-1-10">
@@ -962,6 +1170,9 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 <div id="outline-container-orgb89b893" class="outline-4">
 <h4 id="orgb89b893">Thread error</h4>
 <div class="outline-text-4" id="text-orgb89b893">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 <p width="800px">
 <img src="./img/cap1.png" alt="cap1.png" width="800px" />
@@ -971,9 +1182,15 @@ ssh-add 를 사용해서 key를 등록한다. ssh-add ~/.ssh/company-ec2-keys.pe
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org1a44809" class="outline-4">
 <h4 id="org1a44809">git:check error-permission denied error</h4>
 <div class="outline-text-4" id="text-org1a44809">
+=======
+<div id="outline-container-orga916319" class="outline-4">
+<h4 id="orga916319">git:check error-permission denied error</h4>
+<div class="outline-text-4" id="text-orga916319">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-orga916319" class="outline-4">
 <h4 id="orga916319">git:check error-permission denied error</h4>
@@ -986,9 +1203,15 @@ ssh-add 를 사용해서 key를 등록한다. ssh-add ~/.ssh/company-ec2-keys.pe
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org2ce6b5c" class="outline-4">
 <h4 id="org2ce6b5c">git:create<sub>release</sub> master error</h4>
 <div class="outline-text-4" id="text-org2ce6b5c">
+=======
+<div id="outline-container-org5179ef7" class="outline-4">
+<h4 id="org5179ef7">git:create<sub>release</sub> master error</h4>
+<div class="outline-text-4" id="text-org5179ef7">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org5179ef7" class="outline-4">
 <h4 id="org5179ef7">git:create<sub>release</sub> master error</h4>
@@ -1000,9 +1223,15 @@ ssh-add 를 사용해서 key를 등록한다. ssh-add ~/.ssh/company-ec2-keys.pe
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgc672dc3" class="outline-4">
 <h4 id="orgc672dc3">bundle:install</h4>
 <div class="outline-text-4" id="text-orgc672dc3">
+=======
+<div id="outline-container-org77af25c" class="outline-4">
+<h4 id="org77af25c">bundle:install</h4>
+<div class="outline-text-4" id="text-org77af25c">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org77af25c" class="outline-4">
 <h4 id="org77af25c">bundle:install</h4>
@@ -1025,7 +1254,11 @@ less /home/deploy/myapp/current/log/production.log
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org12ea664" class="figure">
+=======
+<div id="org3da8363" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org3da8363" class="figure">
 >>>>>>> Stashed changes
@@ -1047,8 +1280,13 @@ less /home/deploy/myapp/current/log/production.log
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org0d831ff" class="outline-3">
 <h3 id="org0d831ff"><span class="section-number-3">1.11</span> bundler:install, Failed to build gem native extension</h3>
+=======
+<div id="outline-container-org4bc7938" class="outline-3">
+<h3 id="org4bc7938"><span class="section-number-3">1.11</span> bundler:install, Failed to build gem native extension</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org4bc7938" class="outline-3">
 <h3 id="org4bc7938"><span class="section-number-3">1.11</span> bundler:install, Failed to build gem native extension</h3>
@@ -1075,8 +1313,13 @@ less /home/deploy/myapp/current/log/production.log
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org409037e" class="outline-3">
 <h3 id="org409037e"><span class="section-number-3">1.12</span> deploy:migrating error</h3>
+=======
+<div id="outline-container-orgbaf0600" class="outline-3">
+<h3 id="orgbaf0600"><span class="section-number-3">1.12</span> deploy:migrating error</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-orgbaf0600" class="outline-3">
 <h3 id="orgbaf0600"><span class="section-number-3">1.12</span> deploy:migrating error</h3>
@@ -1098,7 +1341,11 @@ DATABASE<sub>URL</sub>=mysql2://deploy@localhost:/myapp
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgb9af26e" class="figure">
+=======
+<div id="org72585a0" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org72585a0" class="figure">
 >>>>>>> Stashed changes
@@ -1113,7 +1360,11 @@ DATABASE<sub>URL</sub>=mysql2://deploy@localhost:/myapp
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgfe3b83f" class="figure">
+=======
+<div id="org5e9ae9c" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org5e9ae9c" class="figure">
 >>>>>>> Stashed changes
@@ -1125,8 +1376,13 @@ DATABASE<sub>URL</sub>=mysql2://deploy@localhost:/myapp
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orge7d8c7c" class="outline-3">
 <h3 id="orge7d8c7c"><span class="section-number-3">1.13</span> db관련 에러가 계속해서 나올경우</h3>
+=======
+<div id="outline-container-org441634e" class="outline-3">
+<h3 id="org441634e"><span class="section-number-3">1.13</span> db관련 에러가 계속해서 나올경우</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org441634e" class="outline-3">
 <h3 id="org441634e"><span class="section-number-3">1.13</span> db관련 에러가 계속해서 나올경우</h3>
@@ -1164,7 +1420,11 @@ sudo apt-get install -y libmariadbclient-dev
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orge9a55f4" class="figure">
+=======
+<div id="orge45f417" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="orge45f417" class="figure">
 >>>>>>> Stashed changes
@@ -1182,7 +1442,11 @@ sudo apt-get install -y libmariadbclient-dev
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgbd0fc23" class="figure">
+=======
+<div id="org3f1d0e0" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org3f1d0e0" class="figure">
 >>>>>>> Stashed changes
@@ -1215,8 +1479,13 @@ FLUSH PRIVILEGES;
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orga2cc0e8" class="outline-3">
 <h3 id="orga2cc0e8"><span class="section-number-3">1.14</span> cap production deploy 하자마자 sshkit error</h3>
+=======
+<div id="outline-container-org2cfd0dc" class="outline-3">
+<h3 id="org2cfd0dc"><span class="section-number-3">1.14</span> cap production deploy 하자마자 sshkit error</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org2cfd0dc" class="outline-3">
 <h3 id="org2cfd0dc"><span class="section-number-3">1.14</span> cap production deploy 하자마자 sshkit error</h3>
@@ -1230,8 +1499,13 @@ FLUSH PRIVILEGES;
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org5581119" class="outline-3">
 <h3 id="org5581119"><span class="section-number-3">1.15</span> git permission error</h3>
+=======
+<div id="outline-container-orga21b4cd" class="outline-3">
+<h3 id="orga21b4cd"><span class="section-number-3">1.15</span> git permission error</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-orga21b4cd" class="outline-3">
 <h3 id="orga21b4cd"><span class="section-number-3">1.15</span> git permission error</h3>
@@ -1245,11 +1519,19 @@ FLUSH PRIVILEGES;
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgfbd555b" class="outline-3">
 <h3 id="orgfbd555b"><span class="section-number-3">1.16</span> phusion messager is not running</h3>
 <div class="outline-text-3" id="text-1-16">
 
 <div id="orgccbaddf" class="figure">
+=======
+<div id="outline-container-org0a1cb62" class="outline-3">
+<h3 id="org0a1cb62"><span class="section-number-3">1.16</span> phusion messager is not running</h3>
+<div class="outline-text-3" id="text-1-16">
+
+<div id="org82e4b15" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org0a1cb62" class="outline-3">
 <h3 id="org0a1cb62"><span class="section-number-3">1.16</span> phusion messager is not running</h3>
@@ -1267,7 +1549,11 @@ cap production deploy했을때 별다른 이상없이 통과되어 해당 web se
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org5b10588" class="figure">
+=======
+<div id="org98eb4dc" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org98eb4dc" class="figure">
 >>>>>>> Stashed changes
@@ -1278,7 +1564,11 @@ cap production deploy했을때 별다른 이상없이 통과되어 해당 web se
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orga9ab51f" class="figure">
+=======
+<div id="org79c801a" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org79c801a" class="figure">
 >>>>>>> Stashed changes
@@ -1292,7 +1582,11 @@ cap production deploy했을때 별다른 이상없이 통과되어 해당 web se
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="org3b706af" class="figure">
+=======
+<div id="org136128f" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org136128f" class="figure">
 >>>>>>> Stashed changes
@@ -1306,7 +1600,11 @@ cap production deploy했을때 별다른 이상없이 통과되어 해당 web se
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgb38e3e0" class="figure">
+=======
+<div id="org5c9378c" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org5c9378c" class="figure">
 >>>>>>> Stashed changes
@@ -1342,7 +1640,11 @@ EDITOR=vim rails credentials:edit
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgace5994" class="figure">
+=======
+<div id="org35bb49a" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org35bb49a" class="figure">
 >>>>>>> Stashed changes
@@ -1351,6 +1653,7 @@ EDITOR=vim rails credentials:edit
 <p><span class="figure-number">Figure 33: </span>result1</p>
 </div>
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <div id="orgb259875" class="figure">
 <p><img src="./img/final_deploy2.png" alt="final_deploy2.png" width="800px" />
@@ -1395,10 +1698,31 @@ EDITOR=vim rails credentials:edit
 <p><span class="figure-number">Figure 36: </span>result4</p>
 </div>
 
+=======
+<div id="orgfed3c13" class="figure">
+<p><img src="./img/final_deploy2.png" alt="final_deploy2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 34: </span>result2</p>
+</div>
+
+<div id="orgace53a8" class="figure">
+<p><img src="./img/final_deploy3.png" alt="final_deploy3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 35: </span>result3</p>
+</div>
+
+<div id="orga27d3db" class="figure">
+<p><img src="./img/final_deploy4.png" alt="final_deploy4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 36: </span>result4</p>
+</div>
+
+>>>>>>> Stashed changes
 <div id="org8ea3db6" class="figure">
 <p><img src="./img/final_deploy5.png" alt="final_deploy5.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 37: </span>result5</p>
+<<<<<<< Updated upstream
 </div>
 
 >>>>>>> Stashed changes
@@ -1445,6 +1769,39 @@ routing error다. 이것은 routes.rb에 처리하는 루틴이 없기 때문이
 <h4 id="orgb3c1211">routes.rb</h4>
 <div class="outline-text-4" id="text-orgb3c1211">
 >>>>>>> Stashed changes
+=======
+</div>
+
+<p>
+이제 <a href="http://3.34.94.252">http://3.34.94.252</a> 에 접속해 보자.
+다음과 같은 에러가 나온다.
+</p>
+
+<div id="org8a3c2b1" class="figure">
+<p><img src="./img/error.png" alt="error.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 38: </span>error</p>
+</div>
+
+<p>
+에러의 원인을 찾아보기 위해서 운영서버의 /myapp/log/production.log를 보면 다음과 같은 에러가 있다.
+</p>
+
+<div id="org73be0ca" class="figure">
+<p><img src="./img/routingerror.png" alt="routingerror.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 39: </span>routing error</p>
+</div>
+
+<p>
+routing error다. 이것은 routes.rb에 처리하는 루틴이 없기 때문이다. 그런데 local에서는 routes.rb에 처리 루틴이 없는데도 welcome page가 보인다.  무슨 차이가 있는지 모르겠지만, capistrano를 통해서 운영서버에 배포하고 연결을 시도 했을 때는 welcome page가 보이지 않는다.  그래서 간단히 hello world를 출력하는 코드를 만들어봤다.
+</p>
+</div>
+
+<div id="outline-container-orgb3c1211" class="outline-4">
+<h4 id="orgb3c1211">routes.rb</h4>
+<div class="outline-text-4" id="text-orgb3c1211">
+>>>>>>> Stashed changes
 <blockquote>
 <p>
 get "/articles", to: "articles#index"
@@ -1453,9 +1810,15 @@ get "/articles", to: "articles#index"
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org21d0e53" class="outline-4">
 <h4 id="org21d0e53">rails g controller</h4>
 <div class="outline-text-4" id="text-org21d0e53">
+=======
+<div id="outline-container-org96b5daa" class="outline-4">
+<h4 id="org96b5daa">rails g controller</h4>
+<div class="outline-text-4" id="text-org96b5daa">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org96b5daa" class="outline-4">
 <h4 id="org96b5daa">rails g controller</h4>
@@ -1469,9 +1832,15 @@ rails g controller Articles index &#x2013;skip-routes
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org69d3aef" class="outline-4">
 <h4 id="org69d3aef">index.html.erb</h4>
 <div class="outline-text-4" id="text-org69d3aef">
+=======
+<div id="outline-container-orgbdb37bb" class="outline-4">
+<h4 id="orgbdb37bb">index.html.erb</h4>
+<div class="outline-text-4" id="text-orgbdb37bb">
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-orgbdb37bb" class="outline-4">
 <h4 id="orgbdb37bb">index.html.erb</h4>
@@ -1488,7 +1857,11 @@ rails g controller Articles index &#x2013;skip-routes
 </p>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="orgfadf6f5" class="figure">
+=======
+<div id="org18112dd" class="figure">
+>>>>>>> Stashed changes
 =======
 <div id="org18112dd" class="figure">
 >>>>>>> Stashed changes
@@ -1501,8 +1874,13 @@ rails g controller Articles index &#x2013;skip-routes
 </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgff30832" class="outline-3">
 <h3 id="orgff30832"><span class="section-number-3">1.17</span> nginx 설정과  log위치 [ubuntu]</h3>
+=======
+<div id="outline-container-org92cea68" class="outline-3">
+<h3 id="org92cea68"><span class="section-number-3">1.17</span> nginx 설정과  log위치 [ubuntu]</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-org92cea68" class="outline-3">
 <h3 id="org92cea68"><span class="section-number-3">1.17</span> nginx 설정과  log위치 [ubuntu]</h3>
@@ -1529,8 +1907,13 @@ nginx는 일반적인 설정을 한뒤 가상 호스트를 위한 설정 파일�
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-orgafb5b40" class="outline-3">
 <h3 id="orgafb5b40"><span class="section-number-3">1.18</span> passenger log file</h3>
+=======
+<div id="outline-container-orgdc6be88" class="outline-3">
+<h3 id="orgdc6be88"><span class="section-number-3">1.18</span> passenger log file</h3>
+>>>>>>> Stashed changes
 =======
 <div id="outline-container-orgdc6be88" class="outline-3">
 <h3 id="orgdc6be88"><span class="section-number-3">1.18</span> passenger log file</h3>
@@ -1543,10 +1926,13 @@ passenger가 nginx에 통합되어 설치되어 있어서 동일한 log를 사�
 </div>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div id="outline-container-org3dc0988" class="outline-2">
 <h2 id="org3dc0988"><span class="section-number-2">2</span> rails 개발 참조 사이트</h2>
 <div class="outline-text-2" id="text-2">
 =======
+=======
+>>>>>>> Stashed changes
 <div id="outline-container-orgc2b18ab" class="outline-2">
 <h2 id="orgc2b18ab"><span class="section-number-2">2</span> AWS 계정 설정(root and IAM)</h2>
 <div class="outline-text-2" id="text-2">
@@ -1802,6 +2188,9 @@ domain주소를 구입한 후에 등록을 한다.
 <div id="outline-container-orgc3c33cf" class="outline-2">
 <h2 id="orgc3c33cf"><span class="section-number-2">6</span> rails 개발 참조 사이트</h2>
 <div class="outline-text-2" id="text-6">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 <ul class="org-ul">
 <li><a href="https://gorails.com">gorails</a> : 설치, deploy 관련 sites</li>
@@ -1813,7 +2202,11 @@ domain주소를 구입한 후에 등록을 한다.
 <div id="postamble" class="status">
 <p class="author">Author: Hoyoul Park</p>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <p class="date">Created: 2021-07-21 Wed 09:35</p>
+=======
+<p class="date">Created: 2021-07-25 Sun 18:48</p>
+>>>>>>> Stashed changes
 =======
 <p class="date">Created: 2021-07-25 Sun 18:48</p>
 >>>>>>> Stashed changes
