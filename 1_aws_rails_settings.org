@@ -9,7 +9,7 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 #+LATEX_HEADER: \usepackage{kotex}
 #+latex_header: \hypersetup{colorlinks=true}
-<<<<<<< HEAD
+
 * AWS EC2 Server Settings
 ** AWS 계정 만들기
 #+CAPTION: aws1
@@ -18,9 +18,7 @@
 #+attr_latex: :width 100px
 [[./img/aws1.png]]
 
-=======
 * AWS EC2와 Web Server Settings(ROR)
->>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 ** EC2 생성
 - login한 후에 aws ec2를 만들자.
   #+CAPTION: aws2
@@ -247,7 +245,7 @@ ps: /usr/share/nginx/modules-available/에는 사용가능한 module들이 있�
     아래와 같이 수정한다.
 #+CAPTION: passenger config
 #+NAME: passenger config
-#+attr_html: :width 1000px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/pruby.png]]
 
@@ -272,14 +270,14 @@ Nginx를 설치하고 passenger는 module로 설치했다. 즉 모든것인 ngin
 3) nginx 접속 해 본다.
 #+CAPTION: nginx 
 #+NAME: nginx
-#+attr_html: :width 1000px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/nginx2.png]]
 
 4) nginx에 우리의 app을 연결한다.
 #+CAPTION: nginx associates with my app
 #+NAME: nginx with myapp
-#+attr_html: :width 1000px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/nginx3.png]]
 
@@ -298,7 +296,7 @@ Nginx를 설치하고 passenger는 module로 설치했다. 즉 모든것인 ngin
 journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다음과 같은 메시지가 있었다.
 #+CAPTION: pam message
 #+NAME: pam
-#+attr_html: :width 1000px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/pam.png]]
 더 정확한 확인을 위해서 nginx의 log를 확인해 보자
