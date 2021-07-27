@@ -10,8 +10,20 @@
 #+LATEX_HEADER: \usepackage{kotex}
 #+latex_header: \hypersetup{colorlinks=true}
 * AWS EC2 Server Settings
+** AWS 계정 만들기
+#+CAPTION: aws1
+#+NAME: aws1
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws1.png]]
+
 ** EC2 생성
 - login한 후에 aws ec2를 만들자.
+  #+CAPTION: aws2
+#+NAME: aws2
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws2.png]]
   1) Launch instance 실행
 #+CAPTION: launch instance
 #+NAME: launch instance를 만들자.
@@ -56,6 +68,12 @@
 [[./img/key.png]]
 
 ** SSH 접속 settings
+#+CAPTION: aws3
+#+NAME: aws3
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws3.png]]
+
 1) 받은 pem 키를 chmod 0400으로 설정한 후 ~/.ssh/ 에 넣는다.
 2) ec2의 주소를 check한 후 ssh로 접속해보자.
    #+CAPTION: ssh1
@@ -108,33 +126,61 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 [[./img/rootssh.png]]
 
 ** deploy를 위한 계정 설정
+#+CAPTION: aws4
+#+NAME: aws4
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws4.png]]
+
 1) ssh root로 접근
 2) deploy계정 생성
 #+CAPTION: deploy
 #+NAME: deploy
-#+attr_html: :width 1000px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/deployaccount.png]]
 나머지 설정도 해준다.
- #+begin_quote
- 
- #+end_quote
-
 1) deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
-   - sudo mkdir /home/deploy/.ssh
-   - sudo cp /home/ubuntu/.ssh/authorized_keys /home/deploy/.ssh
-   - sudo chown -R deploy:deploy /home/deploy/.ssh
+    #+begin_quote
+   - sudo mkdir /home/deploy//.ssh
+   - sudo cp /home/ubuntu//.ssh/authorized__keys  /home/deploy//.ssh
+   - sudo chown -R deploy:deploy /home/deploy//.ssh
    - sudo service sshd restart
-   - sudo usermod -aG sudo deploy
+   - sudo usermod -aG sudo deploy    
+    #+end_quote
 
 2) test를 해본다.
 
 ** ruby 설정 (deploy계정으로)
+#+CAPTION: 루비 설치
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws5.png]]
+
 #+CAPTION: deploy2
 #+NAME: deploy2
 #+attr_html: :width 1000px
 #+attr_latex: :width 100px
 [[./img/deploy2.png]]
+
+ #+begin_note
+(1) curl -s(silent)L(location) nodejs 12.x  => nodejs를 install한다.
+
+(2) yarn -s(silent)S(show errors) => yarn으로 부터 public key를 가져와서 apt-key 저장소에 등록한다. 그래야 apt로 다운받을 수 있다.
+
+(3) deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc.. => deb로 시작하는것은 3rd party program의 저장소를 가르킨다. sources.list.d/yarn.list는 yarn을 down 받을 수 있는 저장소의 위치를 yarn.list에 기술하면 install할 수 있다.
+
+(4) sudo apt-get install로 필요한 library를 설치한다. 위의 과정들은 nodejs, yarn, redis를  apt-get install로 설치하기 위한 과정이라고 보면 된다.
+
+ #+end_note
+
+** rbenv 설정(deploy계정으로)
+#+CAPTION: aws6
+#+NAME: aws6
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws6.png]]
 
 #+CAPTION: deploy3
 #+NAME: deploy3
@@ -142,19 +188,53 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 #+attr_latex: :width 100px
 [[./img/deploy3.png]]
 
-** bundler설정
+#+begin_note
+1) git clone 으로 .rbenv를 설치한다.
+2) .rbenv/bin을 path에 등록한다.   => 이것은 설치한 rbenv의 실행파일을 실행할 수 있게 하는 것이다.
+3) eval rbenv init - >> ~/.bashrc    => rbenv를 사용하기 위해선 rbenv init을 해주어야 하는데, 매번 system을 시작할 때 해주기가 그래서 shell script파일에 기술해준다.
+4) ruby-build => ruby-build는 rbenv plugin이다. ruby-build를 설치하면, rbenv-install이 있어서 ruby를 설치할 수 있다. 
+5) ruby-build의 path도 추가
+6) rbenv-vars도 rbenv의 plugin이다. rbenv에서 환경변수를 사용할 수 있게 한다.
+#+end_note
+
+** bundler설정 (deploy계정으로)
+#+CAPTION: aws7
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws7.png]]
+
 #+CAPTION: bundler
 #+NAME: bundler
 #+attr_html: :width 1000px
 #+attr_latex: :width 100px
 [[./img/bundler.png]]
 
-** Nginx & Passenger 설정
+bundler는 최신 버전을 설치해도 되지만, 오래된 gem들은 설치가 안되는 문제가 있어서 낮은 버전의 bundler를 실행해야 한다고 한다.
+
+** Nginx & Passenger 설정 (deploy 계정으로)
+#+CAPTION: nginx & passenger
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws8.png]]
+
 #+CAPTION: nginx&passenger
 #+NAME: nginx & passenger
-#+attr_html: :width 1000px
+#+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/nginx.png]]
+
+#+begin_note
+1) key server에 key를 등록
+2) phusion passenger를 설치하기 위해서, source.list.d에 등록한다. 이렇게 해야 apt-get install로 설치할 수 있다.
+3) nginx는 여러종류가 있다. (nginx-full, nginx-extra...) => nginx-extra(extended version)을 사용하고, library passenger module을 설치한다.
+ps:  NGINX는 모듈로 구성되어 있다. nginx에 사용되는 module은 /etc/nginx/modules-enabled/폴더에 있는데, 이미 동작되는 모듈이고, 여기에 module을 넣으면 동작된다.
+ps: /usr/share/nginx/modules-available/에는 사용가능한 module들이 있다. 
+
+4) passenger를 설치했기 때문에, passenger는 /usr/share에 있는 사용가능한 module이기 때문에, Nginx의 /etc/nginx/modules-enabled/폴더에 넣어줘야 된다.
+#+end_note
+즉 위의 과정은 nginx와 passenger를 설치한 후에, passenger모듈을 nginx에 연동한것이다. Nginx의 설정파일은 /etc/nginx/conf.d에 있고, 모듈들의 설정도 여기서 한다.
 
 1) passenger config 파일 수정
     #+begin_quote
@@ -166,6 +246,20 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 #+attr_html: :width 1000px
 #+attr_latex: :width 100px
 [[./img/pruby.png]]
+
+passenger 설정을 끝맞쳤는데 전체적인 과정을 살펴볼 필요가 있다.
+
+#+CAPTION: aws9
+#+NAME: aws9
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws9.png]]
+
+web server는 3개로 구성되어 있다.http server에 해당하는 nginx가 있고, 동적인 문서를 만들어내기 위한 WAS에 해당하는 Phusion Passenger가 있다. 그리고 동적인 page를 만들어내는 rails application이 있다.
+http server는 정적인 파일(test.html, test.png..)을 처리한다. 반면 was는 동적인 파일(test.php,test.asp,test.rb)에 대한 처리를 담당한다. 즉 예를 들어,  gateway단에서 nginx가 요청을 받고 동적인 파일인 경우, passenger에게 넘기게 된다. 
+
+- 그림설명
+Nginx를 설치하고 passenger는 module로 설치했다. 즉 모든것인 nginx안에 포함된 형태다. 외부에서 볼때는 nginx 하나 밖에 안 보인다. nginx설정파일에서 모든 설정을 담당한다. passenger모듈에 대한 설정은 nginx에서 설정파일을 호출하는 식으로 한다. nginx에서는 sites-enabled에 있는 myapp이란 rails application 설정을 호출한다. 즉 nginx가 기동되면, 설정파일을 읽는데, nginx설정파일을 읽고, 그 다음 passenger, 그 다음, rails application설정을 읽는 것이다. 그 이름은 myapp이다.
 
 2) nginx를 다시 시작한다.
    #+begin_quote
@@ -212,7 +306,14 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
 위에 보면 gzip_static_on에 문제가 있어 보인다.
 
 - *solution*: gzip_static on으로 고쳤다.
-** Mariadb Database 설치하기
+
+** Mariadb Database 설치하기 (deploy 계정으로 접속해서)
+#+CAPTION: aws10
+#+NAME: aws10
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/aws10.png]]
+
 1) 우선 system을 업그레이드한다.
     #+begin_quote
     sudo apt update && sudo apt-get -y upgrade
@@ -250,6 +351,9 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
 rails app도 myapp으로 했지만, db에서 database도 myapp으로 통일한다.
 aws에서 만든 계정인 deploy를 db에서도 접근할 수 있게 db에도 만든다.
 
+#+begin_note
+mysql -uroot -p로 접속해서, myapp이라는 database를 만든다. 해당 database에 접근할 계정은 ec2계정의 deploy계정과 동일하다. 그래서 deploy라는 계정을 db에도 만들고, db에서 myapp이라는 database를 접근할 수 있게 한다. 즉 deploy라는 계정으로 ec2접속, db접속을 할 수 있게 해야 capistrano로 CI/CD를 할 수 있는 것이다.
+#+end_note
 
 ** Capistrano설정
 *** capistrano의 일반적 처리과정.
@@ -258,7 +362,7 @@ aws에서 만든 계정인 deploy를 db에서도 접근할 수 있게 db에도 �
 #+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/capistranod.png]]
-1) aws(배포서버)에 접속할 pem이 있는지 확인. pem이 있다면 접속한다.
+1) aws(운영서버)에 접속할 pem이 있는지 확인. pem이 있다면 ssh로 접속한다.
 2) git을 접속할수 있는지 확인(ssh permission), ssh key가 있다면 접속
 3) git source를 배포 서버에 복사 (이 과정이 git:check, git:install....)
 4) Gem을 bundler를 이용해서 설치(이 과정이 bundler:check, bundler:install...)
@@ -305,6 +409,7 @@ set :rbenv_ruby, '3.0.1'
 #+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/deploysettings.png]]
+
 ** Capistrano Error
 *** Thread error
 #+CAPTION: thread
