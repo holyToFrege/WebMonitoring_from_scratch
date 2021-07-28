@@ -3,7 +3,19 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<<<<<<< HEAD
 <!-- 2021-07-27 Tue 17:57 -->
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<!-- 2021-07-21 Wed 09:35 -->
+=======
+<!-- 2021-07-25 Sun 18:48 -->
+>>>>>>> Stashed changes
+=======
+<!-- 2021-07-25 Sun 18:48 -->
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AWS Rails settings</title>
@@ -232,7 +244,13 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
+<<<<<<< HEAD
 <li><a href="#org299aa6c">1. AWS EC2 Server Settings</a>
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<li><a href="#org7d41d69">1. AWS EC2 Server Settings</a>
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <ul>
 <li><a href="#org265b645">1.1. AWS 계정 만들기</a></li>
 <li><a href="#orgd76b556">1.2. EC2 생성</a></li>
@@ -284,8 +302,139 @@
 <h2 id="org299aa6c"><span class="section-number-2">1</span> AWS EC2 Server Settings</h2>
 <div class="outline-text-2" id="text-1">
 </div>
+<<<<<<< HEAD
 <div id="outline-container-org265b645" class="outline-3">
 <h3 id="org265b645"><span class="section-number-3">1.1</span> AWS 계정 만들기</h3>
+=======
+<div id="outline-container-orgd01a83a" class="outline-3">
+<h3 id="orgd01a83a"><span class="section-number-3">1.1</span> EC2 생성</h3>
+=======
+<li><a href="#org985c499">1. AWS EC2와 Web Server Settings(ROR)</a>
+<ul>
+<li><a href="#org5d41c00">1.1. EC2 생성</a></li>
+<li><a href="#org491a8df">1.2. SSH 접속 settings</a></li>
+<li><a href="#orged250ab">1.3. root password설정과 root로 ssh 연결</a></li>
+<li><a href="#orgd3392ed">1.4. deploy를 위한 계정 설정</a></li>
+<li><a href="#org56abcef">1.5. ruby 설정 (deploy계정으로)</a></li>
+<li><a href="#org8b1be73">1.6. bundler설정</a></li>
+<li><a href="#org5485e46">1.7. Nginx &amp; Passenger 설정</a></li>
+<li><a href="#org0f497b0">1.8. Mariadb Database 설치하기</a></li>
+<li><a href="#org445fd6c">1.9. Capistrano설정</a>
+<ul>
+<li><a href="#org7c8c613">capistrano의 일반적 처리과정.</a></li>
+<li><a href="#orga3b7a2b">Gemfile 설정</a></li>
+<li><a href="#org69f3d62">Capfile 설정</a></li>
+<li><a href="#orge153c09">config/deploy.rb 설정</a></li>
+</ul>
+</li>
+<li><a href="#org322ed97">1.10. Capistrano Error</a>
+<ul>
+<li><a href="#orgb89b893">Thread error</a></li>
+<li><a href="#orga916319">git:check error-permission denied error</a></li>
+<li><a href="#org5179ef7">git:create<sub>release</sub> master error</a></li>
+<li><a href="#org77af25c">bundle:install</a></li>
+</ul>
+</li>
+<li><a href="#org4bc7938">1.11. bundler:install, Failed to build gem native extension</a></li>
+<li><a href="#orgbaf0600">1.12. deploy:migrating error</a></li>
+<li><a href="#org441634e">1.13. db관련 에러가 계속해서 나올경우</a></li>
+<li><a href="#org2cfd0dc">1.14. cap production deploy 하자마자 sshkit error</a></li>
+<li><a href="#orga21b4cd">1.15. git permission error</a></li>
+<li><a href="#org0a1cb62">1.16. phusion messager is not running</a>
+<ul>
+<li><a href="#orgb3c1211">routes.rb</a></li>
+<li><a href="#org96b5daa">rails g controller</a></li>
+<li><a href="#orgbdb37bb">index.html.erb</a></li>
+</ul>
+</li>
+<li><a href="#org92cea68">1.17. nginx 설정과  log위치 [ubuntu]</a></li>
+<li><a href="#orgdc6be88">1.18. passenger log file</a></li>
+</ul>
+</li>
+<li><a href="#orgc2b18ab">2. AWS 계정 설정(root and IAM)</a>
+<ul>
+<li><a href="#org17ab347">2.1. root계정 처리</a></li>
+<li><a href="#orgc52775e">2.2. IAM 계정 처리(group and user)</a></li>
+</ul>
+</li>
+<li><a href="#org80263ac">3. AWS 고정 IP 설정</a></li>
+<li><a href="#org627c7fe">4. AWS DNS 주소 할당과정</a></li>
+<li><a href="#org00ab1fd">5. AWS domain주소와 EC2연동</a></li>
+<li><a href="#orgc3c33cf">6. rails 개발 참조 사이트</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org985c499" class="outline-2">
+<h2 id="org985c499"><span class="section-number-2">1</span> AWS EC2와 Web Server Settings(ROR)</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5d41c00" class="outline-3">
+<h3 id="org5d41c00"><span class="section-number-3">1.1</span> EC2 생성</h3>
+>>>>>>> Stashed changes
+=======
+<li><a href="#org985c499">1. AWS EC2와 Web Server Settings(ROR)</a>
+<ul>
+<li><a href="#org5d41c00">1.1. EC2 생성</a></li>
+<li><a href="#org491a8df">1.2. SSH 접속 settings</a></li>
+<li><a href="#orged250ab">1.3. root password설정과 root로 ssh 연결</a></li>
+<li><a href="#orgd3392ed">1.4. deploy를 위한 계정 설정</a></li>
+<li><a href="#org56abcef">1.5. ruby 설정 (deploy계정으로)</a></li>
+<li><a href="#org8b1be73">1.6. bundler설정</a></li>
+<li><a href="#org5485e46">1.7. Nginx &amp; Passenger 설정</a></li>
+<li><a href="#org0f497b0">1.8. Mariadb Database 설치하기</a></li>
+<li><a href="#org445fd6c">1.9. Capistrano설정</a>
+<ul>
+<li><a href="#org7c8c613">capistrano의 일반적 처리과정.</a></li>
+<li><a href="#orga3b7a2b">Gemfile 설정</a></li>
+<li><a href="#org69f3d62">Capfile 설정</a></li>
+<li><a href="#orge153c09">config/deploy.rb 설정</a></li>
+</ul>
+</li>
+<li><a href="#org322ed97">1.10. Capistrano Error</a>
+<ul>
+<li><a href="#orgb89b893">Thread error</a></li>
+<li><a href="#orga916319">git:check error-permission denied error</a></li>
+<li><a href="#org5179ef7">git:create<sub>release</sub> master error</a></li>
+<li><a href="#org77af25c">bundle:install</a></li>
+</ul>
+</li>
+<li><a href="#org4bc7938">1.11. bundler:install, Failed to build gem native extension</a></li>
+<li><a href="#orgbaf0600">1.12. deploy:migrating error</a></li>
+<li><a href="#org441634e">1.13. db관련 에러가 계속해서 나올경우</a></li>
+<li><a href="#org2cfd0dc">1.14. cap production deploy 하자마자 sshkit error</a></li>
+<li><a href="#orga21b4cd">1.15. git permission error</a></li>
+<li><a href="#org0a1cb62">1.16. phusion messager is not running</a>
+<ul>
+<li><a href="#orgb3c1211">routes.rb</a></li>
+<li><a href="#org96b5daa">rails g controller</a></li>
+<li><a href="#orgbdb37bb">index.html.erb</a></li>
+</ul>
+</li>
+<li><a href="#org92cea68">1.17. nginx 설정과  log위치 [ubuntu]</a></li>
+<li><a href="#orgdc6be88">1.18. passenger log file</a></li>
+</ul>
+</li>
+<li><a href="#orgc2b18ab">2. AWS 계정 설정(root and IAM)</a>
+<ul>
+<li><a href="#org17ab347">2.1. root계정 처리</a></li>
+<li><a href="#orgc52775e">2.2. IAM 계정 처리(group and user)</a></li>
+</ul>
+</li>
+<li><a href="#org80263ac">3. AWS 고정 IP 설정</a></li>
+<li><a href="#org627c7fe">4. AWS DNS 주소 할당과정</a></li>
+<li><a href="#org00ab1fd">5. AWS domain주소와 EC2연동</a></li>
+<li><a href="#orgc3c33cf">6. rails 개발 참조 사이트</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org985c499" class="outline-2">
+<h2 id="org985c499"><span class="section-number-2">1</span> AWS EC2와 Web Server Settings(ROR)</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5d41c00" class="outline-3">
+<h3 id="org5d41c00"><span class="section-number-3">1.1</span> EC2 생성</h3>
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <div class="outline-text-3" id="text-1-1">
 
 <div id="org25b6373" class="figure">
@@ -313,7 +462,19 @@ login한 후에 aws ec2를 만들자.
 <li>Launch instance 실행</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="orgcedf972" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org4d29ad6" class="figure">
+=======
+<div id="org1b8be23" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org1b8be23" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/launchinstance.png" alt="launchinstance.png" height="150px" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 3: </span>launch instance</p>
@@ -323,7 +484,19 @@ login한 후에 aws ec2를 만들자.
 <li>ubuntu 20.04를 선택</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="orgbd6cc20" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org56b1e3a" class="figure">
+=======
+<div id="org4a141f7" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org4a141f7" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/ubuntu.png" alt="ubuntu.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 4: </span>ubuntu 20.04 image 선택</p>
@@ -333,7 +506,19 @@ login한 후에 aws ec2를 만들자.
 3)instance를 설정한다.
 </p>
 
+<<<<<<< HEAD
 <div id="org18a60da" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org559797f" class="figure">
+=======
+<div id="org8d397d6" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org8d397d6" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/instance.png" alt="instance.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 5: </span>instance 설정</p>
@@ -343,7 +528,19 @@ login한 후에 aws ec2를 만들자.
 <li>storage(EBS)설정 (돈이 들어간다.)</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="org979447b" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orga0ec04f" class="figure">
+=======
+<div id="org73a3048" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org73a3048" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/default.png" alt="default.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 6: </span>ebs  설정한다.</p>
@@ -353,7 +550,19 @@ login한 후에 aws ec2를 만들자.
 <li>보안관리자(Security Group)</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="org707dfb8" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org8fb0f64" class="figure">
+=======
+<div id="org30c2f91" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org30c2f91" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/network.png" alt="network.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 7: </span>http추가</p>
@@ -363,7 +572,19 @@ login한 후에 aws ec2를 만들자.
 <li>key 생성</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="org6f5d7cb" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org15e8ace" class="figure">
+=======
+<div id="org9e75671" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org9e75671" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/key.png" alt="key.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 8: </span>key</p>
@@ -371,6 +592,7 @@ login한 후에 aws ec2를 만들자.
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgce039e9" class="outline-3">
 <h3 id="orgce039e9"><span class="section-number-3">1.3</span> SSH 접속 settings</h3>
 <div class="outline-text-3" id="text-1-3">
@@ -381,6 +603,21 @@ login한 후에 aws ec2를 만들자.
 <p><span class="figure-number">Figure 9: </span>aws3</p>
 </div>
 
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgbd43cdc" class="outline-3">
+<h3 id="orgbd43cdc"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
+=======
+<div id="outline-container-org491a8df" class="outline-3">
+<h3 id="org491a8df"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org491a8df" class="outline-3">
+<h3 id="org491a8df"><span class="section-number-3">1.2</span> SSH 접속 settings</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-2">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <ol class="org-ol">
 <li>받은 pem 키를 chmod 0400으로 설정한 후 ~/.ssh/ 에 넣는다.</li>
 <li><p>
@@ -388,7 +625,19 @@ ec2의 주소를 check한 후 ssh로 접속해보자.
 </p></li>
 </ol>
 
+<<<<<<< HEAD
 <div id="orgfc0c191" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orge0bb17a" class="figure">
+=======
+<div id="org4e150b8" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org4e150b8" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/ssh1.png" alt="ssh1.png" width="1000px" />
 </p>
 </div>
@@ -402,7 +651,19 @@ ssh -i ~/.ssh/ec2<sub>keys.pem</sub> ubuntu@주소
 aws에서 설정할 때 얻은 ssh pem 키와 주소를 사용해서 ssh접속을 한다. 주소는 dns주소 혹은 ip주소를 사용해도 된다. 아래에 보면 ubuntu계정으로 접속한 것을 볼 수 있다.
 </p>
 
+<<<<<<< HEAD
 <div id="org47a533a" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgf9d7893" class="figure">
+=======
+<div id="orgabc1e14" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="orgabc1e14" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/connection.png" alt="connection.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 11: </span>connection</p>
@@ -410,11 +671,33 @@ aws에서 설정할 때 얻은 ssh pem 키와 주소를 사용해서 ssh접속�
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org8a832d6" class="outline-3">
 <h3 id="org8a832d6"><span class="section-number-3">1.4</span> root password설정과 root로 ssh 연결</h3>
 <div class="outline-text-3" id="text-1-4">
 
 <div id="org4fa27d5" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org51ac5a1" class="outline-3">
+<h3 id="org51ac5a1"><span class="section-number-3">1.3</span> root password설정과 root로 ssh 연결</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<div id="orgff0d25f" class="figure">
+=======
+=======
+>>>>>>> Stashed changes
+<div id="outline-container-orged250ab" class="outline-3">
+<h3 id="orged250ab"><span class="section-number-3">1.3</span> root password설정과 root로 ssh 연결</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<div id="org1a592eb" class="figure">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/root_pw.png" alt="root_pw.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 12: </span>root password설정</p>
@@ -443,7 +726,19 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 <li>service sshd restart</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="orgf5c0fac" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org944859c" class="figure">
+=======
+<div id="org0c15846" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org0c15846" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/ssh처리.png" alt="ssh처리.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 13: </span>ssh 처리</p>
@@ -452,7 +747,19 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 <li>root로 접근이 되는 지 확인해 본다.</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="org32e3e3f" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orga394e93" class="figure">
+=======
+<div id="org358b2c0" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org358b2c0" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/rootssh.png" alt="rootssh.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 14: </span>root ssh</p>
@@ -460,6 +767,7 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org8ac2a61" class="outline-3">
 <h3 id="org8ac2a61"><span class="section-number-3">1.5</span> deploy를 위한 계정 설정</h3>
 <div class="outline-text-3" id="text-1-5">
@@ -470,6 +778,21 @@ PermitRootLogin prohibit-password yes로 바꾼다.
 <p><span class="figure-number">Figure 15: </span>aws4</p>
 </div>
 
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org6b52568" class="outline-3">
+<h3 id="org6b52568"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
+=======
+<div id="outline-container-orgd3392ed" class="outline-3">
+<h3 id="orgd3392ed"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-orgd3392ed" class="outline-3">
+<h3 id="orgd3392ed"><span class="section-number-3">1.4</span> deploy를 위한 계정 설정</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-4">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <ol class="org-ol">
 <li>ssh root로 접근</li>
 <li>deploy계정 생성</li>
@@ -497,6 +820,7 @@ deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org594a78a" class="outline-3">
 <h3 id="org594a78a"><span class="section-number-3">1.6</span> ruby 설정 (deploy계정으로)</h3>
 <div class="outline-text-3" id="text-1-6">
@@ -509,6 +833,29 @@ deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
 
 
 <div id="orgca042cc" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org2040841" class="outline-3">
+<h3 id="org2040841"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<div id="orgf3b2694" class="figure">
+=======
+<div id="outline-container-org56abcef" class="outline-3">
+<h3 id="org56abcef"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<div id="org999b2b6" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org56abcef" class="outline-3">
+<h3 id="org56abcef"><span class="section-number-3">1.5</span> ruby 설정 (deploy계정으로)</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<div id="org999b2b6" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/deploy2.png" alt="deploy2.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 17: </span>deploy2</p>
@@ -527,6 +874,7 @@ deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
 (3) deb <a href="https://dl.yarnpkg.com/debian/">https://dl.yarnpkg.com/debian/</a> stable main" | sudo tee /etc.. =&gt; deb로 시작하는것은 3rd party program의 저장소를 가르킨다. sources.list.d/yarn.list는 yarn을 down 받을 수 있는 저장소의 위치를 yarn.list에 기술하면 install할 수 있다.
 </p>
 
+<<<<<<< HEAD
 <p>
 (4) sudo apt-get install로 필요한 library를 설치한다. 위의 과정들은 nodejs, yarn, redis를  apt-get install로 설치하기 위한 과정이라고 보면 된다.
 </p>
@@ -547,6 +895,17 @@ deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
 
 
 <div id="org3afa6fb" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgcc3b314" class="figure">
+=======
+<div id="org014d79c" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org014d79c" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/deploy3.png" alt="deploy3.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 19: </span>deploy3</p>
@@ -566,6 +925,7 @@ deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org3f133a3" class="outline-3">
 <h3 id="org3f133a3"><span class="section-number-3">1.8</span> bundler설정 (deploy계정으로)</h3>
 <div class="outline-text-3" id="text-1-8">
@@ -578,6 +938,27 @@ deploy계정에도 ubuntu, root처럼 ssh 접근이 가능하게 설정한다.
 
 
 <div id="org44be81a" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org5b282df" class="outline-3">
+<h3 id="org5b282df"><span class="section-number-3">1.6</span> bundler설정</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<div id="orgaffdb17" class="figure">
+=======
+=======
+>>>>>>> Stashed changes
+<div id="outline-container-org8b1be73" class="outline-3">
+<h3 id="org8b1be73"><span class="section-number-3">1.6</span> bundler설정</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<div id="orgec57c3f" class="figure">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/bundler.png" alt="bundler.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 21: </span>bundler</p>
@@ -589,6 +970,7 @@ bundler는 최신 버전을 설치해도 되지만, 오래된 gem들은 설치�
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org3130673" class="outline-3">
 <h3 id="org3130673"><span class="section-number-3">1.9</span> Nginx &amp; Passenger 설정 (deploy 계정으로)</h3>
 <div class="outline-text-3" id="text-1-9">
@@ -602,6 +984,30 @@ bundler는 최신 버전을 설치해도 되지만, 오래된 gem들은 설치�
 
 <div id="org854d504" class="figure">
 <p><img src="./img/nginx.png" alt="nginx.png" width="800px" />
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org6891142" class="outline-3">
+<h3 id="org6891142"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<div id="orgb4b1a4f" class="figure">
+=======
+<div id="outline-container-org5485e46" class="outline-3">
+<h3 id="org5485e46"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<div id="org3429ed8" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org5485e46" class="outline-3">
+<h3 id="org5485e46"><span class="section-number-3">1.7</span> Nginx &amp; Passenger 설정</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<div id="org3429ed8" class="figure">
+>>>>>>> Stashed changes
+<p><img src="./img/nginx.png" alt="nginx.png" width="1000px" />
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 </p>
 <p><span class="figure-number">Figure 23: </span>nginx&amp;passenger</p>
 </div>
@@ -640,7 +1046,19 @@ sudo vi /etc/nginx/conf.d/mod-http-passenger.conf
 </p></li>
 </ol>
 
+<<<<<<< HEAD
 <div id="orgd7a30c0" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgce72c7e" class="figure">
+=======
+<div id="org9a88f8c" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org9a88f8c" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/pruby.png" alt="pruby.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 24: </span>passenger config</p>
@@ -681,7 +1099,19 @@ sudo service nginx start
 <li>nginx 접속 해 본다.</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="org9235d27" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org0a2e335" class="figure">
+=======
+<div id="orga559eef" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="orga559eef" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/nginx2.png" alt="nginx2.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 26: </span>nginx</p>
@@ -691,7 +1121,19 @@ sudo service nginx start
 <li>nginx에 우리의 app을 연결한다.</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="orge6e7ce7" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org64cb491" class="figure">
+=======
+<div id="orgb5380be" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="orgb5380be" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/nginx3.png" alt="nginx3.png" width="1000px" />
 </p>
 <p><span class="figure-number">Figure 27: </span>nginx associates with my app</p>
@@ -730,6 +1172,7 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
 </ul>
 </div>
 </div>
+<<<<<<< HEAD
 
 <div id="outline-container-orgac13430" class="outline-3">
 <h3 id="orgac13430"><span class="section-number-3">1.10</span> Mariadb Database 설치하기 (deploy 계정으로 접속해서)</h3>
@@ -741,6 +1184,21 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
 <p><span class="figure-number">Figure 28: </span>aws10</p>
 </div>
 
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org83c49c4" class="outline-3">
+<h3 id="org83c49c4"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
+=======
+<div id="outline-container-org0f497b0" class="outline-3">
+<h3 id="org0f497b0"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org0f497b0" class="outline-3">
+<h3 id="org0f497b0"><span class="section-number-3">1.8</span> Mariadb Database 설치하기</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-8">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <ol class="org-ol">
 <li><p>
 우선 system을 업그레이드한다.
@@ -771,7 +1229,19 @@ root pw를 설정한다.
 mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="org6e8c124" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org6dcd018" class="figure">
+=======
+<div id="org7b5de75" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org7b5de75" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/connection.png" alt="connection.png" width="400px" />
 </p>
 <p><span class="figure-number">Figure 29: </span>mysql connection</p>
@@ -781,7 +1251,19 @@ mariadb 설치후에 바로 접속을 시도 해도 접속이 된다.</li>
 <li>mariadb에서 database와 user를 만든다.</li>
 </ol>
 
+<<<<<<< HEAD
 <div id="orgb6fcf8d" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org5e9e6d6" class="figure">
+=======
+<div id="orgd43f957" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="orgd43f957" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/db_create.png" alt="db_create.png" width="400px" />
 </p>
 <p><span class="figure-number">Figure 30: </span>db &amp; user</p>
@@ -801,15 +1283,50 @@ mysql -uroot -p로 접속해서, myapp이라는 database를 만든다. 해당 da
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgb07a8d7" class="outline-3">
 <h3 id="orgb07a8d7"><span class="section-number-3">1.11</span> Capistrano설정</h3>
 <div class="outline-text-3" id="text-1-11">
+=======
+
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org77c757d" class="outline-3">
+<h3 id="org77c757d"><span class="section-number-3">1.9</span> Capistrano설정</h3>
+<div class="outline-text-3" id="text-1-9">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 </div>
 <div id="outline-container-org197e957" class="outline-4">
 <h4 id="org197e957">capistrano의 일반적 처리과정.</h4>
 <div class="outline-text-4" id="text-org197e957">
 
+<<<<<<< HEAD
 <div id="org772022d" class="figure">
+=======
+<div id="orga75f259" class="figure">
+=======
+<div id="outline-container-org445fd6c" class="outline-3">
+<h3 id="org445fd6c"><span class="section-number-3">1.9</span> Capistrano설정</h3>
+<div class="outline-text-3" id="text-1-9">
+</div>
+<div id="outline-container-org7c8c613" class="outline-4">
+<h4 id="org7c8c613">capistrano의 일반적 처리과정.</h4>
+<div class="outline-text-4" id="text-org7c8c613">
+
+<div id="orgd4c3419" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org445fd6c" class="outline-3">
+<h3 id="org445fd6c"><span class="section-number-3">1.9</span> Capistrano설정</h3>
+<div class="outline-text-3" id="text-1-9">
+</div>
+<div id="outline-container-org7c8c613" class="outline-4">
+<h4 id="org7c8c613">capistrano의 일반적 처리과정.</h4>
+<div class="outline-text-4" id="text-org7c8c613">
+
+<div id="orgd4c3419" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/capistranod.png" alt="capistranod.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 31: </span>capistrano</p>
@@ -824,9 +1341,27 @@ mysql -uroot -p로 접속해서, myapp이라는 database를 만든다. 해당 da
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgca4e181" class="outline-4">
 <h4 id="orgca4e181">Gemfile 설정</h4>
 <div class="outline-text-4" id="text-orgca4e181">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org2811b0d" class="outline-4">
+<h4 id="org2811b0d">Gemfile 설정</h4>
+<div class="outline-text-4" id="text-org2811b0d">
+=======
+<div id="outline-container-orga3b7a2b" class="outline-4">
+<h4 id="orga3b7a2b">Gemfile 설정</h4>
+<div class="outline-text-4" id="text-orga3b7a2b">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-orga3b7a2b" class="outline-4">
+<h4 id="orga3b7a2b">Gemfile 설정</h4>
+<div class="outline-text-4" id="text-orga3b7a2b">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p>
 Local로 다시 들어간다. myapp으로 간다. Gemfiles에 다음을 추가한다. 추가할 때 group :development에 할당하자.
 이 과정은 capistrano package를 설치하겠다는 것이다.
@@ -860,9 +1395,27 @@ cap으로 만들어지는 파일은 capfile, deploy.rb, staging.rb,production.rb
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org38ad70a" class="outline-4">
 <h4 id="org38ad70a">Capfile 설정</h4>
 <div class="outline-text-4" id="text-org38ad70a">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgbc7458d" class="outline-4">
+<h4 id="orgbc7458d">Capfile 설정</h4>
+<div class="outline-text-4" id="text-orgbc7458d">
+=======
+<div id="outline-container-org69f3d62" class="outline-4">
+<h4 id="org69f3d62">Capfile 설정</h4>
+<div class="outline-text-4" id="text-org69f3d62">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org69f3d62" class="outline-4">
+<h4 id="org69f3d62">Capfile 설정</h4>
+<div class="outline-text-4" id="text-org69f3d62">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p>
 capfile은 배포설정 파일을 load할 뿐이다. 실제 설정은 load되는 파일에서 한다.
 </p>
@@ -881,11 +1434,33 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgb361c09" class="outline-4">
 <h4 id="orgb361c09">config/deploy.rb 설정</h4>
 <div class="outline-text-4" id="text-orgb361c09">
 
 <div id="orge5e94b6" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgd475419" class="outline-4">
+<h4 id="orgd475419">config/deploy.rb 설정</h4>
+<div class="outline-text-4" id="text-orgd475419">
+
+<div id="orgdb17c0c" class="figure">
+=======
+=======
+>>>>>>> Stashed changes
+<div id="outline-container-orge153c09" class="outline-4">
+<h4 id="orge153c09">config/deploy.rb 설정</h4>
+<div class="outline-text-4" id="text-orge153c09">
+
+<div id="org62b6c09" class="figure">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/deploysettings.png" alt="deploysettings.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 32: </span>deploy settings</p>
@@ -893,6 +1468,7 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 </div>
 </div>
 </div>
+<<<<<<< HEAD
 
 <div id="outline-container-org57de82a" class="outline-3">
 <h3 id="org57de82a"><span class="section-number-3">1.12</span> Capistrano Error</h3>
@@ -901,6 +1477,31 @@ set :rbenv<sub>ruby</sub>, '3.0.1'
 <div id="outline-container-orge6dcd2b" class="outline-4">
 <h4 id="orge6dcd2b">Thread error</h4>
 <div class="outline-text-4" id="text-orge6dcd2b">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgd893e1d" class="outline-3">
+<h3 id="orgd893e1d"><span class="section-number-3">1.10</span> Capistrano Error</h3>
+<div class="outline-text-3" id="text-1-10">
+</div>
+<div id="outline-container-org34a67fb" class="outline-4">
+<h4 id="org34a67fb">Thread error</h4>
+<div class="outline-text-4" id="text-org34a67fb">
+=======
+=======
+>>>>>>> Stashed changes
+<div id="outline-container-org322ed97" class="outline-3">
+<h3 id="org322ed97"><span class="section-number-3">1.10</span> Capistrano Error</h3>
+<div class="outline-text-3" id="text-1-10">
+</div>
+<div id="outline-container-orgb89b893" class="outline-4">
+<h4 id="orgb89b893">Thread error</h4>
+<div class="outline-text-4" id="text-orgb89b893">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p width="800px">
 <img src="./img/cap1.png" alt="cap1.png" width="800px" />
 =&gt; cap은 aws에 접근할 수 있는 pem키가 없다면, cap이 진행되지 않고 바로 exception이 난다.
@@ -908,26 +1509,80 @@ ssh-add 를 사용해서 key를 등록한다. ssh-add ~/.ssh/company-ec2-keys.pe
 </p>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="outline-container-org0622305" class="outline-4">
 <h4 id="org0622305">git:check error-permission denied error</h4>
 <div class="outline-text-4" id="text-org0622305">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org1a44809" class="outline-4">
+<h4 id="org1a44809">git:check error-permission denied error</h4>
+<div class="outline-text-4" id="text-org1a44809">
+=======
+<div id="outline-container-orga916319" class="outline-4">
+<h4 id="orga916319">git:check error-permission denied error</h4>
+<div class="outline-text-4" id="text-orga916319">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-orga916319" class="outline-4">
+<h4 id="orga916319">git:check error-permission denied error</h4>
+<div class="outline-text-4" id="text-orga916319">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p width="800px">
 <img src="./img/cap2.png" alt="cap2.png" width="800px" />
    =&gt; ssh-add ~/.ssh/id-rsa 를 해보면 될 수 있다.
 </p>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="outline-container-orgfd9006f" class="outline-4">
 <h4 id="orgfd9006f">git:create<sub>release</sub> master error</h4>
 <div class="outline-text-4" id="text-orgfd9006f">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org2ce6b5c" class="outline-4">
+<h4 id="org2ce6b5c">git:create<sub>release</sub> master error</h4>
+<div class="outline-text-4" id="text-org2ce6b5c">
+=======
+<div id="outline-container-org5179ef7" class="outline-4">
+<h4 id="org5179ef7">git:create<sub>release</sub> master error</h4>
+<div class="outline-text-4" id="text-org5179ef7">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org5179ef7" class="outline-4">
+<h4 id="org5179ef7">git:create<sub>release</sub> master error</h4>
+<div class="outline-text-4" id="text-org5179ef7">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p>
 =&gt; set branch main in deploy.rb
 </p>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="outline-container-org7643e6b" class="outline-4">
 <h4 id="org7643e6b">bundle:install</h4>
 <div class="outline-text-4" id="text-org7643e6b">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgc672dc3" class="outline-4">
+<h4 id="orgc672dc3">bundle:install</h4>
+<div class="outline-text-4" id="text-orgc672dc3">
+=======
+<div id="outline-container-org77af25c" class="outline-4">
+<h4 id="org77af25c">bundle:install</h4>
+<div class="outline-text-4" id="text-org77af25c">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org77af25c" class="outline-4">
+<h4 id="org77af25c">bundle:install</h4>
+<div class="outline-text-4" id="text-org77af25c">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p>
 =&gt; [arm64-darwin-20] but your local platform is x86<sub>64</sub>-linux
 </p>
@@ -944,7 +1599,19 @@ less /home/deploy/myapp/current/log/production.log
 별다른 내용은 없었다. 그래서 release폴더에서 bundle을 실행했고, bundle lock &#x2013;add-platform x86<sub>64</sub>-linux를 실행했다. 그랬더니 다음과 같은 에러가 발생했다.
 </p>
 
+<<<<<<< HEAD
 <div id="orgc048bba" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org12ea664" class="figure">
+=======
+<div id="org3da8363" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org3da8363" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/deploy_server.png" alt="deploy_server.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 33: </span>deploy 배포서버</p>
@@ -962,9 +1629,25 @@ less /home/deploy/myapp/current/log/production.log
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org8c4d5d8" class="outline-3">
 <h3 id="org8c4d5d8"><span class="section-number-3">1.13</span> bundler:install, Failed to build gem native extension</h3>
 <div class="outline-text-3" id="text-1-13">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org0d831ff" class="outline-3">
+<h3 id="org0d831ff"><span class="section-number-3">1.11</span> bundler:install, Failed to build gem native extension</h3>
+=======
+<div id="outline-container-org4bc7938" class="outline-3">
+<h3 id="org4bc7938"><span class="section-number-3">1.11</span> bundler:install, Failed to build gem native extension</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org4bc7938" class="outline-3">
+<h3 id="org4bc7938"><span class="section-number-3">1.11</span> bundler:install, Failed to build gem native extension</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-11">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p width="800px">
 <img src="./img/bundle_error.png" alt="bundle_error.png" width="800px" />
 이 문제에 대한 처리 과정은 다음과 같다.
@@ -985,9 +1668,25 @@ less /home/deploy/myapp/current/log/production.log
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org696ac02" class="outline-3">
 <h3 id="org696ac02"><span class="section-number-3">1.14</span> deploy:migrating error</h3>
 <div class="outline-text-3" id="text-1-14">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org409037e" class="outline-3">
+<h3 id="org409037e"><span class="section-number-3">1.12</span> deploy:migrating error</h3>
+=======
+<div id="outline-container-orgbaf0600" class="outline-3">
+<h3 id="orgbaf0600"><span class="section-number-3">1.12</span> deploy:migrating error</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-orgbaf0600" class="outline-3">
+<h3 id="orgbaf0600"><span class="section-number-3">1.12</span> deploy:migrating error</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-12">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p width="800px">
    <img src="./img/mysqlhosterror.png" alt="mysqlhosterror.png" width="800px" />
 우선 mysql관련 설정환경을 배포 서버의 .rbenv-vars파일에 기술했었는데, 그게 문제일 수도 있다는 생각이 들었다. capistrano가 db에 접속을 해야 하는데, 접속은 URL로 하고, URL정보는 .rbenv-vars파일에 기술했기 때문이다. 그래서 다음과 같이 .rbenv-vars파일을 변경해 보았다.
@@ -1003,7 +1702,19 @@ DATABASE<sub>URL</sub>=mysql2://deploy@localhost:/myapp
 </p>
 
 
+<<<<<<< HEAD
 <div id="orgd67c3bf" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgb9af26e" class="figure">
+=======
+<div id="org72585a0" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org72585a0" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/mysqlsocketerror.png" alt="mysqlsocketerror.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 34: </span>mysqlsocketerror</p>
@@ -1014,7 +1725,19 @@ DATABASE<sub>URL</sub>=mysql2://deploy@localhost:/myapp
 </p>
 
 
+<<<<<<< HEAD
 <div id="org29e49e6" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgfe3b83f" class="figure">
+=======
+<div id="org5e9ae9c" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org5e9ae9c" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/secure_connection.png" alt="secure_connection.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 35: </span>secure<sub>connection</sub></p>
@@ -1022,9 +1745,25 @@ DATABASE<sub>URL</sub>=mysql2://deploy@localhost:/myapp
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgfa07007" class="outline-3">
 <h3 id="orgfa07007"><span class="section-number-3">1.15</span> db관련 에러가 계속해서 나올경우</h3>
 <div class="outline-text-3" id="text-1-15">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orge7d8c7c" class="outline-3">
+<h3 id="orge7d8c7c"><span class="section-number-3">1.13</span> db관련 에러가 계속해서 나올경우</h3>
+=======
+<div id="outline-container-org441634e" class="outline-3">
+<h3 id="org441634e"><span class="section-number-3">1.13</span> db관련 에러가 계속해서 나올경우</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org441634e" class="outline-3">
+<h3 id="org441634e"><span class="section-number-3">1.13</span> db관련 에러가 계속해서 나올경우</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-13">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p>
 mysql과 mariadb를 모두 삭제한다.
 </p>
@@ -1056,7 +1795,19 @@ sudo apt-get install -y libmariadbclient-dev
 그리고 cap production deploy를 하면 또 다시 다른 에러가 나온다.
 </p>
 
+<<<<<<< HEAD
 <div id="org497b43d" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orge9a55f4" class="figure">
+=======
+<div id="orge45f417" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="orge45f417" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/socketerror2.png" alt="socketerror2.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 36: </span>socket error</p>
@@ -1070,7 +1821,19 @@ sudo apt-get install -y libmariadbclient-dev
 그러면 socket 문제는 해결된다. 하지만, Access denied 문제가 발생된다.
 </p>
 
+<<<<<<< HEAD
 <div id="orgc772f02" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgbd0fc23" class="figure">
+=======
+<div id="org3f1d0e0" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org3f1d0e0" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/socketerror3.png" alt="socketerror3.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 37: </span>socket</p>
@@ -1099,9 +1862,25 @@ FLUSH PRIVILEGES;
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org21b8c86" class="outline-3">
 <h3 id="org21b8c86"><span class="section-number-3">1.16</span> cap production deploy 하자마자 sshkit error</h3>
 <div class="outline-text-3" id="text-1-16">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orga2cc0e8" class="outline-3">
+<h3 id="orga2cc0e8"><span class="section-number-3">1.14</span> cap production deploy 하자마자 sshkit error</h3>
+=======
+<div id="outline-container-org2cfd0dc" class="outline-3">
+<h3 id="org2cfd0dc"><span class="section-number-3">1.14</span> cap production deploy 하자마자 sshkit error</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org2cfd0dc" class="outline-3">
+<h3 id="org2cfd0dc"><span class="section-number-3">1.14</span> cap production deploy 하자마자 sshkit error</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-14">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p width="800px">
 <img src="./img/capproduction.png" alt="capproduction.png" width="800px" />
 이것은 aws pem키가 등록되지 않았다는 에러다. ssh-add ~/.ssh/company-ec2-keys.pem로 등록을 해야 한다. 
@@ -1109,9 +1888,25 @@ FLUSH PRIVILEGES;
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org42455a3" class="outline-3">
 <h3 id="org42455a3"><span class="section-number-3">1.17</span> git permission error</h3>
 <div class="outline-text-3" id="text-1-17">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org5581119" class="outline-3">
+<h3 id="org5581119"><span class="section-number-3">1.15</span> git permission error</h3>
+=======
+<div id="outline-container-orga21b4cd" class="outline-3">
+<h3 id="orga21b4cd"><span class="section-number-3">1.15</span> git permission error</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-orga21b4cd" class="outline-3">
+<h3 id="orga21b4cd"><span class="section-number-3">1.15</span> git permission error</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-15">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p width="800px">
 <img src="./img/gitcheckerror.png" alt="gitcheckerror.png" width="800px" />
 이것은 git ssh public key가 등록되지 않았다는 에러다. ssh-add ~/.ssh/id<sub>rsa로</sub> 등록을 해준다.
@@ -1119,11 +1914,35 @@ FLUSH PRIVILEGES;
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org126b632" class="outline-3">
 <h3 id="org126b632"><span class="section-number-3">1.18</span> phusion messager is not running</h3>
 <div class="outline-text-3" id="text-1-18">
 
 <div id="org1006e53" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgfbd555b" class="outline-3">
+<h3 id="orgfbd555b"><span class="section-number-3">1.16</span> phusion messager is not running</h3>
+<div class="outline-text-3" id="text-1-16">
+
+<div id="orgccbaddf" class="figure">
+=======
+<div id="outline-container-org0a1cb62" class="outline-3">
+<h3 id="org0a1cb62"><span class="section-number-3">1.16</span> phusion messager is not running</h3>
+<div class="outline-text-3" id="text-1-16">
+
+<div id="org82e4b15" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org0a1cb62" class="outline-3">
+<h3 id="org0a1cb62"><span class="section-number-3">1.16</span> phusion messager is not running</h3>
+<div class="outline-text-3" id="text-1-16">
+
+<div id="org82e4b15" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/passengererror0.png" alt="passengererror0.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 38: </span>passenger error</p>
@@ -1133,14 +1952,38 @@ FLUSH PRIVILEGES;
 cap production deploy했을때 별다른 이상없이 통과되어 해당 web server로 접속하면, 위와 같은 에러가 발생되는데, 다시 cap production deploy 진행과정을 보니 다음과 같은 문제가 있었다.
 </p>
 
+<<<<<<< HEAD
 <div id="org1003901" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org5b10588" class="figure">
+=======
+<div id="org98eb4dc" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org98eb4dc" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/passengererror.png" alt="passengererror.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 39: </span>passenger error</p>
 </div>
 
 
+<<<<<<< HEAD
 <div id="org25776f2" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orga9ab51f" class="figure">
+=======
+<div id="org79c801a" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org79c801a" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/passengererror3.png" alt="passengererror3.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 40: </span>passenger error3</p>
@@ -1150,7 +1993,19 @@ cap production deploy했을때 별다른 이상없이 통과되어 해당 web se
 그래서 /va/log/nginx/error.log로 가서 어떤 에러인지 확인해봤다.
 </p>
 
+<<<<<<< HEAD
 <div id="org7dd62c3" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="org3b706af" class="figure">
+=======
+<div id="org136128f" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org136128f" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/passengerlog.png" alt="passengerlog.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 41: </span>passenger error</p>
@@ -1160,7 +2015,19 @@ cap production deploy했을때 별다른 이상없이 통과되어 해당 web se
 근데 찝찝했던건, gorails에서 세팅을 제대로 하지 않았다는 것이다.
 </p>
 
+<<<<<<< HEAD
 <div id="orgbc66cbf" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgb38e3e0" class="figure">
+=======
+<div id="org5c9378c" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org5c9378c" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/gorails.png" alt="gorails.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 42: </span>gorails settings</p>
@@ -1192,13 +2059,31 @@ EDITOR=vim rails credentials:edit
 이렇게 하고 cap production deploy를 실행해보자.
 </p>
 
+<<<<<<< HEAD
 <div id="org470600e" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgace5994" class="figure">
+=======
+<div id="org35bb49a" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org35bb49a" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/final_deploy1.png" alt="final_deploy1.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 43: </span>result1</p>
 </div>
 
+<<<<<<< HEAD
 <div id="org55aedb0" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgb259875" class="figure">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/final_deploy2.png" alt="final_deploy2.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 44: </span>result2</p>
@@ -1222,12 +2107,67 @@ EDITOR=vim rails credentials:edit
 <p><span class="figure-number">Figure 47: </span>result5</p>
 </div>
 
+=======
+<div id="orgfed3c13" class="figure">
+<p><img src="./img/final_deploy2.png" alt="final_deploy2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 34: </span>result2</p>
+</div>
+
+<div id="orgace53a8" class="figure">
+<p><img src="./img/final_deploy3.png" alt="final_deploy3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 35: </span>result3</p>
+</div>
+
+<div id="orga27d3db" class="figure">
+<p><img src="./img/final_deploy4.png" alt="final_deploy4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 36: </span>result4</p>
+</div>
+
+=======
+<div id="orgfed3c13" class="figure">
+<p><img src="./img/final_deploy2.png" alt="final_deploy2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 34: </span>result2</p>
+</div>
+
+<div id="orgace53a8" class="figure">
+<p><img src="./img/final_deploy3.png" alt="final_deploy3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 35: </span>result3</p>
+</div>
+
+<div id="orga27d3db" class="figure">
+<p><img src="./img/final_deploy4.png" alt="final_deploy4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 36: </span>result4</p>
+</div>
+
+>>>>>>> Stashed changes
+<div id="org8ea3db6" class="figure">
+<p><img src="./img/final_deploy5.png" alt="final_deploy5.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 37: </span>result5</p>
+<<<<<<< Updated upstream
+</div>
+
+>>>>>>> Stashed changes
 <p>
 이제 <a href="http://3.34.94.252">http://3.34.94.252</a> 에 접속해 보자.
 다음과 같은 에러가 나온다.
 </p>
 
+<<<<<<< HEAD
 <div id="orge5cff5c" class="figure">
+=======
+<<<<<<< Updated upstream
+<div id="org7246bf1" class="figure">
+=======
+<div id="org8a3c2b1" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/error.png" alt="error.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 48: </span>error</p>
@@ -1237,7 +2177,15 @@ EDITOR=vim rails credentials:edit
 에러의 원인을 찾아보기 위해서 운영서버의 /myapp/log/production.log를 보면 다음과 같은 에러가 있다.
 </p>
 
+<<<<<<< HEAD
 <div id="orga48e703" class="figure">
+=======
+<<<<<<< Updated upstream
+<div id="org54632ad" class="figure">
+=======
+<div id="org73be0ca" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/routingerror.png" alt="routingerror.png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 49: </span>routing error</p>
@@ -1248,9 +2196,54 @@ routing error다. 이것은 routes.rb에 처리하는 루틴이 없기 때문이
 </p>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-org4830617" class="outline-4">
 <h4 id="org4830617">routes.rb</h4>
 <div class="outline-text-4" id="text-org4830617">
+=======
+<<<<<<< Updated upstream
+<div id="outline-container-org031f646" class="outline-4">
+<h4 id="org031f646">routes.rb</h4>
+<div class="outline-text-4" id="text-org031f646">
+=======
+<div id="outline-container-orgb3c1211" class="outline-4">
+<h4 id="orgb3c1211">routes.rb</h4>
+<div class="outline-text-4" id="text-orgb3c1211">
+>>>>>>> Stashed changes
+=======
+</div>
+
+<p>
+이제 <a href="http://3.34.94.252">http://3.34.94.252</a> 에 접속해 보자.
+다음과 같은 에러가 나온다.
+</p>
+
+<div id="org8a3c2b1" class="figure">
+<p><img src="./img/error.png" alt="error.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 38: </span>error</p>
+</div>
+
+<p>
+에러의 원인을 찾아보기 위해서 운영서버의 /myapp/log/production.log를 보면 다음과 같은 에러가 있다.
+</p>
+
+<div id="org73be0ca" class="figure">
+<p><img src="./img/routingerror.png" alt="routingerror.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 39: </span>routing error</p>
+</div>
+
+<p>
+routing error다. 이것은 routes.rb에 처리하는 루틴이 없기 때문이다. 그런데 local에서는 routes.rb에 처리 루틴이 없는데도 welcome page가 보인다.  무슨 차이가 있는지 모르겠지만, capistrano를 통해서 운영서버에 배포하고 연결을 시도 했을 때는 welcome page가 보이지 않는다.  그래서 간단히 hello world를 출력하는 코드를 만들어봤다.
+</p>
+</div>
+
+<div id="outline-container-orgb3c1211" class="outline-4">
+<h4 id="orgb3c1211">routes.rb</h4>
+<div class="outline-text-4" id="text-orgb3c1211">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <blockquote>
 <p>
 get "/articles", to: "articles#index"
@@ -1258,9 +2251,27 @@ get "/articles", to: "articles#index"
 </blockquote>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="outline-container-org70920ae" class="outline-4">
 <h4 id="org70920ae">rails g controller</h4>
 <div class="outline-text-4" id="text-org70920ae">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org21d0e53" class="outline-4">
+<h4 id="org21d0e53">rails g controller</h4>
+<div class="outline-text-4" id="text-org21d0e53">
+=======
+<div id="outline-container-org96b5daa" class="outline-4">
+<h4 id="org96b5daa">rails g controller</h4>
+<div class="outline-text-4" id="text-org96b5daa">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org96b5daa" class="outline-4">
+<h4 id="org96b5daa">rails g controller</h4>
+<div class="outline-text-4" id="text-org96b5daa">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <blockquote>
 <p>
 rails g controller Articles index &#x2013;skip-routes
@@ -1268,9 +2279,27 @@ rails g controller Articles index &#x2013;skip-routes
 </blockquote>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="outline-container-org3d29072" class="outline-4">
 <h4 id="org3d29072">index.html.erb</h4>
 <div class="outline-text-4" id="text-org3d29072">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org69d3aef" class="outline-4">
+<h4 id="org69d3aef">index.html.erb</h4>
+<div class="outline-text-4" id="text-org69d3aef">
+=======
+<div id="outline-container-orgbdb37bb" class="outline-4">
+<h4 id="orgbdb37bb">index.html.erb</h4>
+<div class="outline-text-4" id="text-orgbdb37bb">
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-orgbdb37bb" class="outline-4">
+<h4 id="orgbdb37bb">index.html.erb</h4>
+<div class="outline-text-4" id="text-orgbdb37bb">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <blockquote>
 <p>
 &lt;h1&gt; hello hoyoul&lt;/h1&gt;
@@ -1281,7 +2310,19 @@ rails g controller Articles index &#x2013;skip-routes
 위와 같이 하고 github에 저장한후 cap production deploy를 사용해서 운영서버에 배포한후 url로 접근하면 해당 페이지를 볼 수 있다.
 </p>
 
+<<<<<<< HEAD
 <div id="org7d65717" class="figure">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="orgfadf6f5" class="figure">
+=======
+<div id="org18112dd" class="figure">
+>>>>>>> Stashed changes
+=======
+<div id="org18112dd" class="figure">
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p><img src="./img/hello .png" alt="hello .png" width="800px" />
 </p>
 <p><span class="figure-number">Figure 50: </span>hello</p>
@@ -1290,9 +2331,25 @@ rails g controller Articles index &#x2013;skip-routes
 </div>
 </div>
 
+<<<<<<< HEAD
 <div id="outline-container-orgcf4f491" class="outline-3">
 <h3 id="orgcf4f491"><span class="section-number-3">1.19</span> nginx 설정과  log위치 [ubuntu]</h3>
 <div class="outline-text-3" id="text-1-19">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgff30832" class="outline-3">
+<h3 id="orgff30832"><span class="section-number-3">1.17</span> nginx 설정과  log위치 [ubuntu]</h3>
+=======
+<div id="outline-container-org92cea68" class="outline-3">
+<h3 id="org92cea68"><span class="section-number-3">1.17</span> nginx 설정과  log위치 [ubuntu]</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-org92cea68" class="outline-3">
+<h3 id="org92cea68"><span class="section-number-3">1.17</span> nginx 설정과  log위치 [ubuntu]</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-17">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <blockquote>
 <p>
 /etc/nginx/nginx.conf [설정]
@@ -1313,18 +2370,303 @@ nginx는 일반적인 설정을 한뒤 가상 호스트를 위한 설정 파일�
 </p>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="outline-container-org53b4e0a" class="outline-3">
 <h3 id="org53b4e0a"><span class="section-number-3">1.20</span> passenger log file</h3>
 <div class="outline-text-3" id="text-1-20">
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-orgafb5b40" class="outline-3">
+<h3 id="orgafb5b40"><span class="section-number-3">1.18</span> passenger log file</h3>
+=======
+<div id="outline-container-orgdc6be88" class="outline-3">
+<h3 id="orgdc6be88"><span class="section-number-3">1.18</span> passenger log file</h3>
+>>>>>>> Stashed changes
+=======
+<div id="outline-container-orgdc6be88" class="outline-3">
+<h3 id="orgdc6be88"><span class="section-number-3">1.18</span> passenger log file</h3>
+>>>>>>> Stashed changes
+<div class="outline-text-3" id="text-1-18">
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p>
 passenger가 nginx에 통합되어 설치되어 있어서 동일한 log를 사용한다고 보면 된다.
 </p>
 </div>
 </div>
 </div>
+<<<<<<< HEAD
 <div id="outline-container-org6abedfa" class="outline-2">
 <h2 id="org6abedfa"><span class="section-number-2">2</span> rails 개발 참조 사이트</h2>
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<div id="outline-container-org3dc0988" class="outline-2">
+<h2 id="org3dc0988"><span class="section-number-2">2</span> rails 개발 참조 사이트</h2>
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <div class="outline-text-2" id="text-2">
+=======
+=======
+>>>>>>> Stashed changes
+<div id="outline-container-orgc2b18ab" class="outline-2">
+<h2 id="orgc2b18ab"><span class="section-number-2">2</span> AWS 계정 설정(root and IAM)</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org17ab347" class="outline-3">
+<h3 id="org17ab347"><span class="section-number-3">2.1</span> root계정 처리</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+AWS을 사용하면 root계정으로 login하면 안된다. IAM 사용자 계정을 사용해야 한다. root계정은 보안문제로 MFA(Multi Factor Authentication)을 꼭 설정해야 한다.
+</p>
+
+<div id="orgac618aa" class="figure">
+<p><img src="./img/root1.png" alt="root1.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 41: </span>ROOT</p>
+</div>
+
+
+<div id="org1f5b807" class="figure">
+<p><img src="./img/root2.png" alt="root2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 42: </span>ROOT2</p>
+</div>
+
+
+<div id="orgb722da5" class="figure">
+<p><img src="./img/root3.png" alt="root3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 43: </span>root3</p>
+</div>
+
+
+<div id="org23c83db" class="figure">
+<p><img src="./img/root4.png" alt="root4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 44: </span>root4</p>
+</div>
+
+<p>
+설치할 MFA기기는 가상기기이고, 내 경우, google authenticator를 설치했다.
+중간에 보면 <b>show QR code</b> 가 있다. 이것을 누르면 QR code가 보인다. 그리고 code1과 code2를 기입한다.
+</p>
+
+<p width="800px">
+<img src="./img/root5.png" alt="root5.png" width="800px" />
+이제 root에 대한 MFA처리가 끝났다.
+</p>
+
+<p width="800px">
+<img src="./img/root6.png" alt="root6.png" width="800px" />
+앞으로 root login은 mfa로 묻는다.
+이제 IAM계정을 만든다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc52775e" class="outline-3">
+<h3 id="orgc52775e"><span class="section-number-3">2.2</span> IAM 계정 처리(group and user)</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+보통은 group을 만들고 group에 permission을 준 다음에 user를 넣어주지만, 작은 조직의 경우, user만을 생성해서 관리해도 된다.
+</p>
+
+
+<div id="org979cccb" class="figure">
+<p><img src="./img/user1.png" alt="user1.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 45: </span>user 생성</p>
+</div>
+
+
+<div id="org88cc93f" class="figure">
+<p><img src="./img/user2.png" alt="user2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 46: </span>user 생성</p>
+</div>
+
+<p>
+위와같이 user id를 만들고, pw를 설정한다. pw를 임시로 설정하고, 실제 login시 사용자가 설정하도록 한다.
+</p>
+<p width="800px">
+<img src="./img/user3.png" alt="user3.png" width="800px" />
+정책을 선택한다.
+</p>
+
+
+<div id="org126ce01" class="figure">
+<p><img src="./img/user4.png" alt="user4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 47: </span>user 생성</p>
+</div>
+
+<p width="800px">
+<img src="./img/user5.png" alt="user5.png" width="800px" />
+tag 생성은 넘어간다.
+</p>
+
+
+<div id="orgec37510" class="figure">
+<p><img src="./img/user6.png" alt="user6.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 48: </span>user 생성</p>
+</div>
+
+
+<div id="orgd53fe3b" class="figure">
+<p><img src="./img/user7.png" alt="user7.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 49: </span>user 생성</p>
+</div>
+
+<p>
+이제 user가 만들어졌고, login할 수 있는 account ID 가 만들어져서 접속할 수 있게 되었다.
+위에 account id를 로긴할 때 입력하면 된다.
+참고로 account ID는 모든 IAM 계정들은 동일한 값을 갖는다.
+</p>
+
+
+<div id="org9720b9e" class="figure">
+<p><img src="./img/user8.png" alt="user8.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 50: </span>user 생성</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org80263ac" class="outline-2">
+<h2 id="org80263ac"><span class="section-number-2">3</span> AWS 고정 IP 설정</h2>
+<div class="outline-text-2" id="text-3">
+
+<div id="org48504fc" class="figure">
+<p><img src="./img/eip.png" alt="eip.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 51: </span>elastic IP</p>
+</div>
+
+<p>
+AWS에서 ec2를 만들면, public ip이지만, 이것은 고정된 ip가 아니다. DHCP처럼 ec2는 재시작할 때 마다, ip를 갱신하는 과정을 거친다. 이를 고정 IP로 하기 위해선, elastic ip를 사용한다.  설정방법은 그냥 default로 진행하는건데, 이렇게 할때, option은 어떻게 설정해야 하는가? 하는 문젠데 설명이 나와 있진 않다.
+</p>
+
+<div id="org9fc150b" class="figure">
+<p><img src="./img/eip2.png" alt="eip2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 52: </span>eip2</p>
+</div>
+
+<p>
+위와 같이 해주면 elastic ip가 만들어졌다. 만들어진 elastic ip를 ec2와 연결하는 과정이 필요하다.
+다시 ec2 dashboard로 접속한다. 거기서 elastic ip를 선택한다.
+</p>
+
+
+<div id="org5ef6206" class="figure">
+<p><img src="./img/eip3.png" alt="eip3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 53: </span>eip3</p>
+</div>
+
+
+<div id="orge4c4854" class="figure">
+<p><img src="./img/eip4.png" alt="eip4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 54: </span>eip4</p>
+</div>
+
+<p>
+여기까지 하면 elastic ip를 만들고 ec2와 연동하는 것까지 완료가 되었다. 이제 확인해 보자.
+ec2 dashboard로 접근한다. 그 다음 ec2 instance의 정보를 보자.
+</p>
+
+
+<div id="orge5ff0cb" class="figure">
+<p><img src="./img/eip5.png" alt="eip5.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 55: </span>eip5</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org627c7fe" class="outline-2">
+<h2 id="org627c7fe"><span class="section-number-2">4</span> AWS DNS 주소 할당과정</h2>
+<div class="outline-text-2" id="text-4">
+
+<div id="org294d4ed" class="figure">
+<p><img src="./img/Route_53_1.png" alt="Route_53_1.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 56: </span>route53</p>
+</div>
+<p width="800px">
+<img src="./img/route_53_1-2.png" alt="route_53_1-2.png" width="800px" />
+위에서 원하는 domain주소를 구입할 수 있다. 가격은 그렇게 비싸지 않은듯 하다.
+domain주소를 구입한 후에 등록을 한다.
+</p>
+
+
+<div id="org620becc" class="figure">
+<p><img src="./img/route_53_1-3.png" alt="route_53_1-3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 57: </span>route53</p>
+</div>
+
+
+<div id="orge5b0255" class="figure">
+<p><img src="./img/route_53_1-4.png" alt="route_53_1-4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 58: </span>route53</p>
+</div>
+
+
+<div id="org7d31a6f" class="figure">
+<p><img src="./img/route_53_1-5.png" alt="route_53_1-5.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 59: </span>route53</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org00ab1fd" class="outline-2">
+<h2 id="org00ab1fd"><span class="section-number-2">5</span> AWS domain주소와 EC2연동</h2>
+<div class="outline-text-2" id="text-5">
+
+<div id="org555d7fb" class="figure">
+<p><img src="./img/route_53_2.png" alt="route_53_2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 60: </span>route53</p>
+</div>
+
+
+<div id="org2cb55b0" class="figure">
+<p><img src="./img/route_53_2-1.png" alt="route_53_2-1.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 61: </span>route53</p>
+</div>
+
+
+<div id="org1f3dba3" class="figure">
+<p><img src="./img/route_53_3.png" alt="route_53_3.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 62: </span>route 53</p>
+</div>
+
+
+<div id="orge3002db" class="figure">
+<p><img src="./img/route_53_4.png" alt="route_53_4.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 63: </span>route 53</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgc3c33cf" class="outline-2">
+<h2 id="orgc3c33cf"><span class="section-number-2">6</span> rails 개발 참조 사이트</h2>
+<div class="outline-text-2" id="text-6">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 <ul class="org-ul">
 <li><a href="https://gorails.com">gorails</a> : 설치, deploy 관련 sites</li>
 <li><a href="https://rubyonrails.org">rubyonrails</a>: ruby on rails 개발 sites</li>
@@ -1334,7 +2676,19 @@ passenger가 nginx에 통합되어 설치되어 있어서 동일한 log를 사�
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Hoyoul Park</p>
+<<<<<<< HEAD
 <p class="date">Created: 2021-07-27 Tue 17:57</p>
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<p class="date">Created: 2021-07-21 Wed 09:35</p>
+=======
+<p class="date">Created: 2021-07-25 Sun 18:48</p>
+>>>>>>> Stashed changes
+=======
+<p class="date">Created: 2021-07-25 Sun 18:48</p>
+>>>>>>> Stashed changes
+>>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
