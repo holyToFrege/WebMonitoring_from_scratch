@@ -9,11 +9,6 @@
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 #+LATEX_HEADER: \usepackage{kotex}
 #+latex_header: \hypersetup{colorlinks=true}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 0b3804055aaf93325d843b24d4b132201243530e
 * AWS EC2 Server Settings
 ** AWS 계정 만들기
 #+CAPTION: aws1
@@ -21,13 +16,7 @@
 #+attr_html: :width 800px
 #+attr_latex: :width 100px
 [[./img/aws1.png]]
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 0b3804055aaf93325d843b24d4b132201243530e
 * AWS EC2와 Web Server Settings(ROR)
->>>>>>> 586cd2fe12a969e0e75bf1630f99e7abc2d68c09
 ** EC2 생성
 - login한 후에 aws ec2를 만들자.
   #+CAPTION: aws2
@@ -316,7 +305,7 @@ journalctl -xe를 실행해서 에러의 원인이 뭔지 알고 싶었다. 다�
 [[./img/errorlog.png]]
 위에 보면 gzip_static_on에 문제가 있어 보인다.
 
-- *solution*: gzip_static on으로 고쳤다.
+- *solution*: server의 site-enabled/설정파일에서  gzip_static on으로 고쳤다.
 
 ** Mariadb Database 설치하기 (deploy 계정으로 접속해서)
 #+CAPTION: aws10
@@ -706,6 +695,20 @@ nginx는 일반적인 설정을 한뒤 가상 호스트를 위한 설정 파일�
 을 실행한다.
 ** passenger log file
 passenger가 nginx에 통합되어 설치되어 있어서 동일한 log를 사용한다고 보면 된다.
+* AWS EC2 web port 보안(방화벽처리)
+- http 포트를 여는 것이 단순하지 않다. https와 http를 맞춰야 한다. 다음과 같이 세팅해야 한다.
+#+CAPTION: port1
+#+NAME: 
+#+attr_html: :width 400px :height 300px
+#+attr_latex: :width 100px
+[[./img/port1.png]]
+
+#+CAPTION: port2
+#+NAME: 
+#+attr_html: :width 400px :height 300px
+#+attr_latex: :width 100px
+[[./img/port2.png]]
+
 * AWS 계정 설정(root and IAM)
 ** root계정 처리
 AWS을 사용하면 root계정으로 login하면 안된다. IAM 사용자 계정을 사용해야 한다. root계정은 보안문제로 MFA(Multi Factor Authentication)을 꼭 설정해야 한다.
@@ -904,7 +907,283 @@ domain주소를 구입한 후에 등록을 한다.
 #+attr_latex: :width 100px
 [[./img/route_53_4.png]]
 
+* AWS domain주소에서 www추가 방법
+#+begin_note
+이것은 간단하다. route53을 이용하면 된다.
+#+end_note
+- route53으로 이동한다.
+#+CAPTION: www1
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/www1.png]]
 
+- host zone을 click해서 이동한다.
+#+CAPTION: www2
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/www2.png]]
+
+- alias만드는 법
+- create record를 선택하고 아래 그림처럼 처리하면 된다. 
+#+CAPTION: www3
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/www3.png]]
+* AWS EC2 instance type변경
+#+begin_note
+현재 t2.micro 프리티어를 사용한다. t1.micro의 사양은 다음과 같다. 
+1. cpu core:1개
+2. memory: 1Gbits
+3. SSD: 8G bytes
+
+우선 t2.small로 변경하려 한다.
+t2는 cpu core2개와 memory가 2Gbits를 사용한다.
+#+end_note
+
+** 변경 과정
+#+begin_note
+(1) EC2를 stop한다.
+#+end_note
+#+CAPTION: ec2_1
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/ec2_1.png]]
+
+#+begin_note
+(2) instance settings => change instance type을 선택한다.
+#+end_note
+#+CAPTION: ec2_2
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/ec2_2.png]]
+
+#+begin_note
+(3) t2.small을 선택한다. 이것만 하면 된다.
+#+end_note
+
+* AWS EC2 size변경
+
+** EBS 볼륨 확장
+#+begin_note
+ec2의 용량을 변경하기로 한다. 지금 현재 크기는 t2.micro라서 8G를 사용한다. 이를 50G를 늘리려고 한다.
+EBS의 볼륨 확장과,  파일 시스템 확장이 필요하다.
+- EBS 볼륨 확장 선택을 먼저한다.
+- 확장하고자 하는 size를 변경한다.
+- 그리고 ok를 계속하면 볼륨변경이 된다.
+#+end_note
+#+CAPTION: ec2_3
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/ec2_3.png]]
+
+#+CAPTION: ec2_4
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/ec2_4.png]]
+
+** EBS 파일 시스템 확장
+#+begin_note
+ebs볼륨을 확장한 이후에, 다시 system을 킨다. 그리고 ssh 접속을 한다.
+- lsblk로 block정보를 본다. volume과 partition정보를 볼 수 있다. 우리는 aws에서 volume을 50G로 정했다.
+- partition에도 50G가 할당되었기 때문에 growpart로 증가시킬 필요는 없다.
+- 즉 제대로된 정보가 반영되었다고 본다.
+#+end_note
+#+CAPTION: ec5
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/ec2_5.png]]
+
+#+CAPTION: ec2_6
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/ec2_6.png]]
+
+* AWS https 접근처리
+#+begin_note
+AWS에서 https를 처리하는 방식은 2가지가 있다. 첫번째는 AWS의 서비스를 이용하는 방식과 자체적으로 하는 방식이 있다. https는 domain name에 대한 인증서를 발급받는 과정이 필요한데, AWS의 경우, 인증서를 받는것은 ACM(Amazon Certificates Manager)에서 발급 받을 수 있다. 또한 AWS에서는 load balancer를 통해서 ACM과 router53이 유기적으로 연결되어 있어서 domain name으로 요청하는 사람에 대해서 인증서 발급처리를 도맡아 한다. load balancer는 비용이 있다. 작은 서비스를 사용할 때는 돈들여 가며 할 필요가 없다고 느껴지지만, 큰 장점이 있다. ddos공격을  aws가 막아준다는 것이다. third-party 인증서를 발급받을 경우, ACM이나 load-balancer를 사용하지 않을 수 있다. 그러나 load-balancer를 사용하지 않으면 ddos공격에 취약해진다. 우선 나는 ACM과 load-balancer를 사용하기로 한다.
+#+end_note
+** 인증서 발급
+#+begin_note
+https로 접근하기 위해서는 SSL 인증서를 발급받아야 한다. 인증서에 대해서 간략하게 설명하면, 보안 통신을 할때, public key와 private  key로 메시지를 encrypt해서 서로 통신을 하게 되는데, 이렇게 되면 보내고 받는 message는 encrypt가 되어 문제는 없으나, 정작 내가 message를 주고 받는 당사자가 해커 일수 있다. 해커가 은행 site를 만들어서 login하는 사람에게 자신의 public key를 전송해서 통신을 해도 모른다는 것이다. 이것을 방지하기 위해서 통신하는 대상이 진짜인가? 가짜인가?는 인증서로 증명된다. 인증서는 권위가 있는 기관으로 부터 인증 받는다. 인증서안에는 public key가 있기 때문에 encrypt된 message통신이 가능하다. 여튼 server를 만드는 사람이 사용자에게 나는 진짜 이 site가 맞다라고 확실하게 말할 수 있는 것은 인증서가 있기 때문이다. server를 만들때 인증서를 만들어야 하는데, aws를 사용하기 때문에 aws로 부터 발급받을 수 있다. 그 과정이다.
+1) certificate manager로 들어간다.
+2) provision certificate를 선택한다.
+3) amazon의 공인 인증서를 요청한다.
+4) 지금 사용하는 domain이름을  추가한다.
+5) 검증방법을 선택한다. 나는 route53을 사용하기 때문에, DNS validate를 사용한다.
+6) tag는 사용하지 않는다.
+7) 최종 요청을 한다.
+8) pending되고 처리가 되지 않는다. route53에 cname을 추가하는 과정을 거쳐야 한다. 이 과정을 거치면 인증서가 발급된다.
+    cname레코드가 추가되는 이유는 검증용이다. cname record를 추가하는 과정에서 domain name을 입력한다. domain name으로 aws에 있는 ec2에 접근한다고 하자. aws에 의해서 domain name에 대한 검증을 해야 한다. 이때 사용되는게 cname이다. 일반적으로 사람들이  domain name으로 ec2에 접근을 하면 aws에 있는 route53에서 해당 domain name으로 query를 한다. 만일 A Record로 기술 되어있다면, IP주소를 return한다. A record는 domain name:ip쌍으로 되어 있어서 ip주소를 value로 갖는다. CNAME 레코드는 좀 다르다. CNAME record의  값은 또 다른 domain name 주소다. 그래서 cname은 다른 domain주소를 return한다. 여기서 cname주소를 추가한것은 aws 검증용 서버로 보내기 위함이다. 아래 보면 arecord의 예도 보인다.
+#+end_note
+#+CAPTION: cname1
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cname1.png]]
+
+#+CAPTION: a record
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/a_record.png]]
+#+begin_note
+9) certificate manager에서 인증서가 발급되었는지 확인하자.
+10) route53에서 cname이 추가되었는지도 확인해보자.
+#+end_note
+#+CAPTION: certificate manager
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert1.png]]
+
+#+CAPTION: certificate manager2
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert2.png]]
+
+#+CAPTION: certificate manager3
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert3.png]]
+
+#+CAPTION: certificate manager4
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert4.png]]
+
+#+CAPTION: certificate manager5
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert5.png]]
+
+#+CAPTION: certificate manager
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert6.png]]
+
+#+CAPTION: cert7
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert7.png]]
+
+-  domain name의 smartwatercare를 click하면, route53에 CNAME을 추가하는게 보일 것이다.
+#+CAPTION: cert8
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert8.png]]
+
+- cname을 route53에 추가한다.
+#+CAPTION: cert9
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert9.png]]
+
+#+CAPTION: cert10
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert10.png]]
+
+- certificate manager로 들어가서 인증서가 발급되었는지 확인해 보자.
+#+CAPTION: cert11
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert11.png]]
+
+- route53으로 들어가서 cname이 추가되었는지 확인해보자.
+
+#+CAPTION: cert12
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/cert12.png]]
+
+** load balancer 설정
+- ec2 -> load balancer로 이동한다.
+#+CAPTION: load balancer1
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load1.png]]
+- load balancer를 설정한다. 
+#+CAPTION: load_balance2
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load2.png]]
+
+#+CAPTION: load_balance3
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load3.png]]
+
+#+CAPTION: load_balance4
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load4.png]]
+
+#+CAPTION: load_balance5
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load5.png]]
+- error 발생
+#+begin_note
+1. load-balancer의 이름은 유일해야 한다.
+2. Figure97-4번을 보면 target group을 설정해야 한다. 이 부분이 없으면 load balancer를 만들 수 없다.
+#+end_note
+-  target group 생성
+#+CAPTION: load6
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load6.png]]
+
+#+CAPTION: load7
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load7.png]]
+- health check는 그냥 넘어갔다. 그리고  register target이라는 화면이 나왔다.
+#+CAPTION: load8
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load8.png]]
+
+- target group설정이 끝났다. 이제 다시 load balancer를 만드는 과정으로 다시 돌아간다. 지금 만든 target group으로 설정한다. 그러면 load balancer가 다 만들어졌다. 그런데 접속이 안된다. 443포트를 열었다.
+#+CAPTION: load9
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/load9.png]]
+
+- route53에서 A record를 삭제 해보았다.
+- 그래도 안된다.
+
+ #+begin_warning
+ 최종적으로 우선 https는 적용하지 않기로 했다.
+ #+end_warning
 * rails 개발 참조 사이트
 - [[https://gorails.com][gorails]] : 설치, deploy 관련 sites
 - [[https://rubyonrails.org][rubyonrails]]: ruby on rails 개발 sites

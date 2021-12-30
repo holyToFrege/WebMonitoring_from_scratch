@@ -1,0 +1,60 @@
+#+TITLE: DB Usage
+#+AUTHOR: Hoyoul Park
+#+DESCRIPTION: Org-HTML export made simple.
+#+KEYWORDS:  org-mode, export, html, theme, style, css, js, bigblow
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 toc:t num:2
+#+MACRO: color @@html:<font color=></font>@@
+#+PROPERTY:  header-args :padline no
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+LATEX_HEADER: \usepackage{kotex}
+#+latex_header: \hypersetup{colorlinks=true}
+* my.cnf 위치 확인
+ #+begin_quote
+mysqld --verbose --help | grep -A 1 'Default options' 
+ #+end_quote
+보통 mariadb는 /etc/mysql/my.cnf에 있다. mariadb와 mysql은 동일한
+이름을 쓴다고 보면 된다. my.cnf에서 db에 대한 설정을 한다고 하는데,
+실제 설정하는 위치는 다음과 같은거 같다.
+ #+begin_quote
+ /etc/mysql/mariadb.conf.d/50-server.cnf
+ #+end_quote
+여기서 bind address를 설정할 수 있다.
+* DB 서버(start, stop)
+ #+begin_quote
+ service mysql restart
+ #+end_quote
+ 하면 1.ubuntu, 2.deploy를 선택한다. 사용자 계정을 선택해서 mysql server를 중지하거나 시작, 재시작 할 수 있다.
+
+* AWS DB 접근하게 하기
+aws 로긴한 후에 security group으로 들어간다.
+#+CAPTION: mysql port1
+#+NAME: mysql port1
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/mysqlport1.png]]
+
+#+CAPTION: mysql port2
+#+NAME: 
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/mysqlport2.png]]
+
+해당 port를 허가한다.
+
+* Table 만들기
+
+* root로 외부접속
+현재 root는 외부에서 접속할 수 없게 되어 있다.
+#+CAPTION: root
+#+NAME: root
+#+attr_html: :width 800px
+#+attr_latex: :width 100px
+[[./img/root1.png]]
+root를 바꾸지 말고, 개인 사용자를 만들고 외부에서 접근할 수 있게 하자.
+ #+begin_quote
+ grant all privileges on *.* to 'kwater01'@'%' identified by '1234'
+ #+end_quote
+
+
+

@@ -1,0 +1,15 @@
+#+TITLE: REST API
+#+AUTHOR: Hoyoul Park
+#+DESCRIPTION: Org-HTML export made simple.
+#+KEYWORDS:  org-mode, export, html, theme, style, css, js, bigblow
+#+LANGUAGE:  en
+#+OPTIONS:   H:4 toc:t num:2
+#+MACRO: color @@html:<font color=></font>@@
+#+PROPERTY:  header-args :padline no
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+LATEX_HEADER: \usepackage{kotex}
+#+latex_header: \hypersetup{colorlinks=true}
+* Restful
+#+begin_note
+Restful하다는 것은 REST방식을 사용한다는 것이다. REST(Representational State Transfer)는 Resource를 represent하는 방식과  state를 transfer하는 2개로 나눠진다.
+#+end_note

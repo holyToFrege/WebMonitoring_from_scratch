@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-08-09 Mon 15:54 -->
+<!-- 2021-12-31 Fri 04:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs Settings for ROR</title>
+<title>DB Usage</title>
 <meta name="generator" content="Org mode" />
-<meta name="author" content="Holy Frege" />
+<meta name="author" content="Hoyoul Park" />
 <meta name="description" content="Org-HTML export made simple."
  />
 <meta name="keywords" content="org-mode, export, html, theme, style, css, js, bigblow" />
@@ -221,153 +221,107 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Emacs Settings for ROR</h1>
+<h1 class="title">DB Usage</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0e7269b">1. Emacs Settings for ROR</a>
-<ul>
-<li><a href="#org9ba4f22">1.1. rbenv 설치와 사용법</a>
-<ul>
-<li><a href="#org330e1ba">[osx]에서 설치와 사용법</a></li>
-<li><a href="#orgb4ab83c">[emacs]에서 설치와 사용법</a></li>
-</ul>
-</li>
-<li><a href="#orge175d19">1.2. Projectile-rails</a></li>
-<li><a href="#org4a01421">1.3. inf-ruby</a></li>
-</ul>
-</li>
+<li><a href="#org4b746bc">1. my.cnf 위치 확인</a></li>
+<li><a href="#orgf6449bf">2. DB 서버(start, stop)</a></li>
+<li><a href="#org628b4ec">3. AWS DB 접근하게 하기</a></li>
+<li><a href="#org985abbe">4. Table 만들기</a></li>
+<li><a href="#org8e460f1">5. root로 외부접속</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0e7269b" class="outline-2">
-<h2 id="org0e7269b"><span class="section-number-2">1</span> Emacs Settings for ROR</h2>
+<div id="outline-container-org4b746bc" class="outline-2">
+<h2 id="org4b746bc"><span class="section-number-2">1</span> my.cnf 위치 확인</h2>
 <div class="outline-text-2" id="text-1">
-</div>
-<div id="outline-container-org9ba4f22" class="outline-3">
-<h3 id="org9ba4f22"><span class="section-number-3">1.1</span> rbenv 설치와 사용법</h3>
-<div class="outline-text-3" id="text-1-1">
-</div>
-<div id="outline-container-org330e1ba" class="outline-4">
-<h4 id="org330e1ba">[osx]에서 설치와 사용법</h4>
-<div class="outline-text-4" id="text-org330e1ba">
-<ul class="org-ul">
-<li><p>
-설치
-</p>
 <blockquote>
 <p>
-brew install rbenv
-</p>
-</blockquote></li>
-<li><p>
-설치 가능한 ruby목록
-</p>
-<blockquote>
-<p>
-rbenv install -l
-rbenv install -L
-</p>
-</blockquote></li>
-<li><p>
-설치된 목록 확인
-</p>
-<blockquote>
-<p>
-rbenv versions
-</p>
-</blockquote></li>
-<li><p>
-설치된 ruby에서 global설정
-</p>
-<blockquote>
-<p>
-rbenv global 2.6.3
-</p>
-</blockquote></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgb4ab83c" class="outline-4">
-<h4 id="orgb4ab83c">[emacs]에서 설치와 사용법</h4>
-<div class="outline-text-4" id="text-orgb4ab83c">
-<ul class="org-ul">
-<li><p>
-emacs에서 설치
-</p>
-<blockquote>
-<p>
-(use-package rbenv
-:ensure t)
-</p>
-</blockquote></li>
-<li><p>
-emacs에서 설정
-</p>
-<blockquote>
-<p>
-(setq rbenv-installation-dir "/opt/homebrew/rbenv")
-</p>
-</blockquote></li>
-</ul>
-<p>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orge175d19" class="outline-3">
-<h3 id="orge175d19"><span class="section-number-3">1.2</span> Projectile-rails</h3>
-<div class="outline-text-3" id="text-1-2">
-<blockquote>
-<p>
-C-c r c : Controllers
-C-c r v : Views
-C-c r m : Models
+mysqld &#x2013;verbose &#x2013;help | grep -A 1 'Default options' 
 </p>
 </blockquote>
-
-<div class="note" id="org9cc04b6">
 <p>
-C-c r !g : generate
+보통 mariadb는 /etc/mysql/my.cnf에 있다. mariadb와 mysql은 동일한
+이름을 쓴다고 보면 된다. my.cnf에서 db에 대한 설정을 한다고 하는데,
+실제 설정하는 위치는 다음과 같은거 같다.
 </p>
-
-</div>
-<p>
-<code>=====</code>
-<code>=====</code>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes
-</p>
-</div>
-</div>
-<div id="outline-container-org4a01421" class="outline-3">
-<h3 id="org4a01421"><span class="section-number-3">1.3</span> inf-ruby</h3>
-<div class="outline-text-3" id="text-1-3">
-<div class="note" id="orgc3243c5">
-<p>
-Ruby Repl이다.
-</p>
-
-</div>
 <blockquote>
 <p>
-M-x inf-ruby
+/etc/mysql/mariadb.conf.d/50-server.cnf
 </p>
 </blockquote>
-
-
 <p>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes
+여기서 bind address를 설정할 수 있다.
 </p>
 </div>
+</div>
+<div id="outline-container-orgf6449bf" class="outline-2">
+<h2 id="orgf6449bf"><span class="section-number-2">2</span> DB 서버(start, stop)</h2>
+<div class="outline-text-2" id="text-2">
+<blockquote>
+<p>
+service mysql restart
+</p>
+</blockquote>
+<p>
+하면 1.ubuntu, 2.deploy를 선택한다. 사용자 계정을 선택해서 mysql server를 중지하거나 시작, 재시작 할 수 있다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org628b4ec" class="outline-2">
+<h2 id="org628b4ec"><span class="section-number-2">3</span> AWS DB 접근하게 하기</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+aws 로긴한 후에 security group으로 들어간다.
+</p>
+
+<div id="orgc9fd2d8" class="figure">
+<p><img src="./img/mysqlport1.png" alt="mysqlport1.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>mysql port1</p>
+</div>
+
+
+<div id="org02737d7" class="figure">
+<p><img src="./img/mysqlport2.png" alt="mysqlport2.png" width="800px" />
+</p>
+<p><span class="figure-number">Figure 2: </span>mysql port2</p>
+</div>
+
+<p>
+해당 port를 허가한다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org985abbe" class="outline-2">
+<h2 id="org985abbe"><span class="section-number-2">4</span> Table 만들기</h2>
+</div>
+
+<div id="outline-container-org8e460f1" class="outline-2">
+<h2 id="org8e460f1"><span class="section-number-2">5</span> root로 외부접속</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+현재 root는 외부에서 접속할 수 없게 되어 있다.
+</p>
+<p width="800px">
+<img src="./img/root1.png" alt="root1.png" width="800px" />
+root를 바꾸지 말고, 개인 사용자를 만들고 외부에서 접근할 수 있게 하자.
+</p>
+<blockquote>
+<p>
+grant all privileges on <b>.</b> to 'kwater01'@'%' identified by '1234'
+</p>
+</blockquote>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Holy Frege</p>
-<p class="date">Created: 2021-08-09 Mon 15:54</p>
+<p class="author">Author: Hoyoul Park</p>
+<p class="date">Created: 2021-12-31 Fri 04:46</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
